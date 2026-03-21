@@ -89,14 +89,16 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', async e => {
       e.preventDefault();
       
-      // Check browser-level validation (triggers "Please fill out this field" tooltips)
-      if (!contactForm.reportValidity()) {
-        return;
-      }
-
       const btn = contactForm.querySelector('button[type="submit"]');
       const btnText = btn.querySelector('.button-text');
       const originalBtnText = btnText.textContent;
+      const errorEl = document.querySelector('#form-error');
+      
+      // Hide any previous error
+      if (errorEl) errorEl.style.display = 'none';
+
+      // Check browser-level validation
+      if (!contactForm.reportValidity()) return;
       
       // 1. Loading State
       btn.disabled = true;
@@ -115,25 +117,29 @@ document.addEventListener('DOMContentLoaded', () => {
           formContainer.style.display = 'none';
           successScreen.style.display = 'flex';
           
-          // Scroll for visibility
           const card = contactForm.closest('.form-card');
           if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
           contactForm.reset();
         } else {
-          throw new Error('Submission failed');
+          throw new Error();
         }
       } catch (err) {
-        alert('Oops! There was a problem sending your inquiry. Please try again.');
+        // ERROR: Restore button and show inline feedback
         btn.disabled = false;
         btnText.textContent = originalBtnText;
+        if (errorEl) {
+          errorEl.textContent = 'Submission failed. Please check your connection and try again.';
+          errorEl.style.display = 'block';
+        }
       }
     });
 
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        // Reverse
+        // Reset
         successScreen.style.display = 'none';
         formContainer.style.display = 'block';
+        if (errorEl) errorEl.style.display = 'none';
         contactForm.reset();
       });
     }
