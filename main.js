@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     marquee.addEventListener('touchend', resumeFunc, {passive: true});
     marquee.addEventListener('mouseup', resumeFunc);
     
-    let autoScrollSpeed = 0.1; // Slower cinematic speed requested by the user
+    let autoScrollSpeed = 0.15; // Set to exactly 0.15 as requested by the user
     let currentX = 0; // The true fractional scroll position
 
     function autoScroll() {
