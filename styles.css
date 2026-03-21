@@ -537,6 +537,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--primary);
 }
 
+/* Success State for Form Submission */
+.animated-cta.is-sent .circle {
+  width: 100% !important;
+  background: #2e7d32 !important; /* Material Success Green */
+}
+.animated-cta.is-sent .button-text {
+  color: #fff !important;
+  margin-left: 3.5rem !important;
+}
+.animated-cta.is-sent .circle .icon.arrow {
+  display: none;
+}
+.animated-cta.is-sent .circle .icon.check {
+  display: block;
+}
+.animated-cta .circle .icon.check {
+  display: none;
+  font-family: 'Material Symbols Outlined';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--on-primary);
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+.animated-cta .circle .icon.check::after {
+  content: "check";
+}
+
 /* ---------- Section Wrappers ---------- */
 .section { padding: 5rem 1.5rem; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
@@ -615,12 +645,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: opacity 0.3s ease;
 }
 
-.card-glow-wrapper:hover {
+.card-glow-wrapper:hover, .card-glow-wrapper.play-hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 48px rgba(0, 38, 63, 0.15);
 }
 
-.card-glow-wrapper:hover::before {
+.card-glow-wrapper:hover::before, .card-glow-wrapper.play-hover::before {
   opacity: 1; /* Brightens on hover */
 }
 

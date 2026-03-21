@@ -85,13 +85,27 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
       const btn = contactForm.querySelector('button[type="submit"]');
-      const original = btn.innerHTML;
-      btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Sent!';
-      btn.style.background = 'var(--secondary)';
+      const btnText = btn.querySelector('.button-text');
+      const circle = btn.querySelector('.circle');
+      
+      // Ensure we have a check icon ready
+      let checkIcon = circle.querySelector('.icon.check');
+      if (!checkIcon) {
+        checkIcon = document.createElement('span');
+        checkIcon.className = 'icon check';
+        circle.appendChild(checkIcon);
+      }
+
+      const originalText = btnText.textContent;
+      
+      // Trigger Success State
+      btn.classList.add('is-sent');
+      btnText.textContent = 'Sent!';
       btn.disabled = true;
+
       setTimeout(() => {
-        btn.innerHTML = original;
-        btn.style.background = '';
+        btn.classList.remove('is-sent');
+        btnText.textContent = originalText;
         btn.disabled = false;
         contactForm.reset();
       }, 3000);
@@ -233,7 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!link) return;
 
     // Target specific interactive components that have distinct hover states
-    const targetSelectors = ['.btn', '.animated-cta', '.service-card', '.module-card', '.card', '.why-card'];
+    const targetSelectors = ['.btn', '.animated-cta', '.service-card', '.module-card', '.card', '.why-card', '.card-glow-wrapper'];
     const needsAnimation = targetSelectors.some(sel => link.matches(sel) || link.closest(sel));
 
     if (needsAnimation && !link.dataset.animating) {
@@ -243,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       link.dataset.animating = "true";
       
       // Add the play-hover class to the link itself or its nearest visual parent
-      const visualTarget = link.closest('.card, .service-card, .module-card, .why-card, .btn, .animated-cta') || link;
+      const visualTarget = link.closest('.card-glow-wrapper, .card, .service-card, .module-card, .why-card, .btn, .animated-cta') || link;
       visualTarget.classList.add('play-hover');
 
       // Wait for the animation (longest is 0.45s, so 500ms is safe)
