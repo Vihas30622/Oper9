@@ -127,39 +127,49 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(card);
   });
 
-  /* ---------- Interactive Marquee Auto-Scroller ---------- */
+  /* ---------- Interactive Infinite Bi-Directional Marquee ---------- */
   const marquee = document.getElementById('visionary-marquee');
   if (marquee) {
     let isScrolling = true;
     let autoScrollSpeed = 1;
 
-    // Pause on interactions
-    marquee.addEventListener('mouseenter', () => isScrolling = false);
-    marquee.addEventListener('mouseleave', () => isScrolling = true);
-    marquee.addEventListener('touchstart', () => isScrolling = false, {passive: true});
-    marquee.addEventListener('touchend', () => {
-      setTimeout(() => isScrolling = true, 1500);
-    });
-
-    function autoScroll() {
-      if (isScrolling) {
-        marquee.scrollLeft += autoScrollSpeed;
-        
-        // When we scroll past the first set, jump back to start seamlessly
-        // The first set ends halfway through the total scroll width.
-        // max scrollLeft is scrollWidth - clientWidth
-        const maxScroll = marquee.scrollWidth - marquee.clientWidth;
-        if (marquee.scrollLeft >= maxScroll - 5) {
-          marquee.scrollLeft = 1; // Seamless jump
-        }
-      }
-      requestAnimationFrame(autoScroll);
-    }
-    
-    // Start after a slight delay
+    // Wait for layout calculation then start in the middle (Set 2)
     setTimeout(() => {
+      // Each set is exactly 1/3 of the total scrollable width
+      const totalScrollWidth = marquee.scrollWidth;
+      marquee.scrollLeft = totalScrollWidth / 3;
+      
+      // Pause strictly during active manual drag/swipe gestures, not hover
+      marquee.addEventListener('touchstart', () => isScrolling = false, {passive: true});
+      marquee.addEventListener('touchend', () => setTimeout(() => isScrolling = true, 1000));
+      marquee.addEventListener('mousedown', () => isScrolling = false);
+      marquee.addEventListener('mouseup', () => setTimeout(() => isScrolling = true, 1000));
+      marquee.addEventListener('mouseleave', () => setTimeout(() => isScrolling = true, 1000));
+      
+      // Bi-directional explicit manual scroll loop observer
+      // Utilizing the scroll event captures momentum swipes beautifully
+      marquee.addEventListener('scroll', () => {
+        const boundaryObj = marquee.scrollWidth / 3;
+        // If scrolled backwards into Set 1
+        if (marquee.scrollLeft <= 5) {
+          marquee.scrollLeft = boundaryObj + 5; 
+        }
+        // If scrolled forwards deeply into Set 3
+        else if (marquee.scrollLeft >= (boundaryObj * 2) - 5) {
+          marquee.scrollLeft = boundaryObj - 5; 
+        }
+      });
+      
+      // The gentle auto-motor
+      function autoScroll() {
+        if (isScrolling) {
+          marquee.scrollLeft += autoScrollSpeed;
+        }
+        requestAnimationFrame(autoScroll);
+      }
+      
       requestAnimationFrame(autoScroll);
-    }, 1000);
+    }, 800);
   }
 
 });
