@@ -79,37 +79,33 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(el => countObserver.observe(el));
   }
 
-  /* ---------- Form Submit Feedback ---------- */
+  /* ---------- Form Submit Feedback (Full Screen) ---------- */
   const contactForm = document.querySelector('#contact-form');
-  if (contactForm) {
+  const formContainer = document.querySelector('#contact-form-container');
+  const successScreen = document.querySelector('#contact-success');
+  const resetBtn = document.querySelector('#reset-form');
+
+  if (contactForm && formContainer && successScreen) {
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
-      const btn = contactForm.querySelector('button[type="submit"]');
-      const btnText = btn.querySelector('.button-text');
-      const circle = btn.querySelector('.circle');
       
-      // Ensure we have a check icon ready
-      let checkIcon = circle.querySelector('.icon.check');
-      if (!checkIcon) {
-        checkIcon = document.createElement('span');
-        checkIcon.className = 'icon check';
-        circle.appendChild(checkIcon);
-      }
-
-      const originalText = btnText.textContent;
+      // 1. Hide form, show success
+      formContainer.style.display = 'none';
+      successScreen.style.display = 'flex';
       
-      // Trigger Success State
-      btn.classList.add('is-sent');
-      btnText.textContent = 'Sent!';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.classList.remove('is-sent');
-        btnText.textContent = originalText;
-        btn.disabled = false;
-        contactForm.reset();
-      }, 3000);
+      // Scroll to top of the card for better mobile visibility
+      const card = contactForm.closest('.form-card');
+      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        // Reverse
+        successScreen.style.display = 'none';
+        formContainer.style.display = 'block';
+        contactForm.reset();
+      });
+    }
   }
 
   /* ---------- Smooth scroll for anchor links ---------- */

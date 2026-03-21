@@ -97,42 +97,54 @@
       <div class="contact-grid">
         <!-- Form -->
         <div class="form-card reveal">
-          <h2 style="font-size:1.25rem;font-weight:800;color:var(--primary);margin-bottom:1.75rem;letter-spacing:-0.03em;">Send an Inquiry</h2>
-          <form id="contact-form" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
-            <div class="form-group">
-              <label class="form-label" for="name">Full Name</label>
-              <input class="form-input" type="text" id="name" name="name" placeholder="Dr. Julian Vane" required/>
+          <div id="contact-form-container">
+            <h2 style="font-size:1.25rem;font-weight:800;color:var(--primary);margin-bottom:1.75rem;letter-spacing:-0.03em;">Send an Inquiry</h2>
+            <form id="contact-form" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name</label>
+                <input class="form-input" type="text" id="name" name="name" placeholder="Dr. Julian Vane" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input class="form-input" type="email" id="email" name="email" placeholder="j.vane@biotech.com" required/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="phone">Phone Number</label>
+                <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000"/>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="service">Area of Interest</label>
+                <select class="form-input" id="service" name="service" style="appearance:none;cursor:pointer;">
+                  <option value="" disabled selected>Select a service area...</option>
+                  <option value="regulatory">Regulatory Services</option>
+                  <option value="pharmacovigilance">Pharmacovigilance</option>
+                  <option value="publishing">Publishing Services</option>
+                  <option value="webdev">Web Development</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="message">Consultation Details</label>
+                <textarea class="form-textarea" id="message" name="message" placeholder="Describe your inquiry..." required></textarea>
+              </div>
+              <button type="submit" class="animated-cta" style="width:100%;">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Send Inquiry</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div id="contact-success" style="display:none; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:3.5rem 1rem; background:var(--primary); color:#fff; border-radius:var(--radius-xl); min-height:480px; animation: fadeIn 0.5s ease forwards;">
+            <div style="width:72px; height:72px; border-radius:50%; background:rgba(255,255,255,0.1); display:flex; align-items:center; justify-content:center; margin-bottom:2rem; border:1px solid rgba(255,255,255,0.2);">
+              <span class="material-symbols-outlined" style="font-size:2.5rem; color:#fff;">check</span>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="email">Email Address</label>
-              <input class="form-input" type="email" id="email" name="email" placeholder="j.vane@biotech.com" required/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="phone">Phone Number</label>
-              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000"/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="service">Area of Interest</label>
-              <select class="form-input" id="service" name="service" style="appearance:none;cursor:pointer;">
-                <option value="" disabled selected>Select a service area...</option>
-                <option value="regulatory">Regulatory Services</option>
-                <option value="pharmacovigilance">Pharmacovigilance</option>
-                <option value="publishing">Publishing Services</option>
-                <option value="webdev">Web Development</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="message">Consultation Details</label>
-              <textarea class="form-textarea" id="message" name="message" placeholder="Describe your inquiry..." required></textarea>
-            </div>
-            <button type="submit" class="animated-cta" style="width:100%;">
-              <span class="circle" aria-hidden="true">
-                <span class="icon arrow"></span>
-              </span>
-              <span class="button-text">Send Inquiry</span>
-            </button>
-          </form>
+            <h2 style="font-size:2.25rem; font-weight:800; margin-bottom:1rem; letter-spacing:-0.04em; color:#fff;">Message Sent!</h2>
+            <p style="color:rgba(255,255,255,0.7); font-size:1.125rem; margin-bottom:3rem; max-width:340px; line-height:1.6;">Thanks for reaching out. We'll get back to you within 24 hours.</p>
+            <button id="reset-form" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:#fff; padding:0.75rem 2rem;">Send Another Message</button>
+          </div>
         </div>
 
         <!-- Info + Map -->
