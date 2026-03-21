@@ -120,20 +120,24 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Interactive Marquee */
 .interactive-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding: 1rem 0 3rem;
+  cursor: grab;
+  user-select: none; /* prevent text selection during drag */
+  touch-action: none; /* prevent native touch scroll */
+}
+.interactive-marquee:active { cursor: grabbing; }
+
+.marquee-track {
   display: flex;
   gap: 3rem;
-  overflow-x: auto;
-  padding: 1rem 0 3rem;
-  margin: 0 -1.5rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: auto; /* Required for JS smooth scroll */
+  width: max-content;
+  will-change: transform;
 }
-.interactive-marquee::-webkit-scrollbar { display: none; }
 
-.interactive-marquee .visionary-card {
+.visionary-card {
   min-width: 260px;
   flex-shrink: 0;
   text-align: center;
@@ -144,7 +148,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
 }
 
-.interactive-marquee .visionary-card:hover {
+.visionary-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 16px 40px rgba(0, 38, 63, 0.08);
 }

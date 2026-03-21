@@ -127,104 +127,97 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(card);
   });
 
-  /* ---------- Flawless Cinematic Auto-Scroller ---------- */
+  /* ---------- Buttery Smooth Transform Marquee ---------- */
   const marquee = document.getElementById('visionary-marquee');
-  if (marquee) {
-    // 1. Clone the base elements cleanly through JS to build a massive robust track
-    const originalCards = Array.from(marquee.children);
-    // Clone 30 times guaranteeing an un-hittable edge for massive momentum flicks
+  const track = document.getElementById('marquee-track');
+  
+  if (marquee && track) {
+    // 1. Build a massive track via JS
+    const originalCards = Array.from(track.children);
     for (let i = 0; i < 30; i++) {
       originalCards.forEach(card => {
         const clone = card.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
-        marquee.appendChild(clone);
+        track.appendChild(clone);
       });
     }
 
-    let isScrolling = true;
-    let interactionTimeout;
-    let lastScrollLeft = 0;
-    
-    // Exact visual synchronization measurement
+    let isAutoScrolling = true;
+    let isDragging = false;
+    let startX = 0;
+    let startTranslate = 0;
+    let currentTranslate = 0;
+    let autoScrollSpeed = 0.15;
     let setWidth = 0;
+    let resumeTimeout;
+
+    // Measure and Initialize
     setTimeout(() => {
-      const allCards = marquee.querySelectorAll('.visionary-card');
+      const allCards = track.querySelectorAll('.visionary-card');
       if (allCards.length > 5) {
         setWidth = allCards[5].offsetLeft - allCards[0].offsetLeft;
-        marquee.scrollLeft = setWidth * 15; // Set precisely in the middle!
-        lastScrollLeft = marquee.scrollLeft;
+        currentTranslate = -setWidth * 12; // Start in the middle of our massive track
+        track.style.transform = `translateX(${currentTranslate}px)`;
       }
     }, 500);
 
-    // ANY physical movement (touch, mouse, wheel, MOMENTUM physics) fires the 'scroll' event.
-    // By exclusively debouncing this, we NEVER kill a native momentum swipe mid-flight!
-    marquee.addEventListener('scroll', () => {
-      // Causality Check: Did our internal autoScroll engine trigger this?
-      if (Math.abs(marquee.scrollLeft - lastScrollLeft) <= 1) {
-        return; // Ignore engine-driven scrolls
+    // Interaction Handlers
+    const startDrag = (e) => {
+      isDragging = true;
+      isAutoScrolling = false;
+      clearTimeout(resumeTimeout);
+      startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      startTranslate = currentTranslate;
+    };
+
+    const moveDrag = (e) => {
+      if (!isDragging) return;
+      const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+      const delta = x - startX;
+      currentTranslate = startTranslate + delta;
+      
+      // Boundary check during drag
+      if (setWidth > 0) {
+        if (currentTranslate < -setWidth * 25) currentTranslate += (setWidth * 10);
+        if (currentTranslate > -setWidth * 5) currentTranslate -= (setWidth * 10);
       }
       
-      // If we reach here, it's a real user swipe or momentum coasting!
-      isScrolling = false;
-      clearTimeout(interactionTimeout);
-      interactionTimeout = setTimeout(() => {
-        isScrolling = true;
-      }, 3000); // Resume after 3 seconds of inactivity
-    }, {passive: true});
-
-    // We also listen to explicit user grabs so it doesn't squirm while they hold it still
-    const pauseFunc = () => { 
-      isScrolling = false; 
-      clearTimeout(interactionTimeout); 
+      track.style.transform = `translateX(${currentTranslate}px)`;
     };
-    const resumeFunc = () => {
-      clearTimeout(interactionTimeout);
-      interactionTimeout = setTimeout(() => {
-        isScrolling = true;
+
+    const endDrag = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      // Start 3s resume timer
+      clearTimeout(resumeTimeout);
+      resumeTimeout = setTimeout(() => {
+        isAutoScrolling = true;
       }, 3000);
     };
 
-    marquee.addEventListener('touchstart', pauseFunc, {passive: true});
-    marquee.addEventListener('mousedown', pauseFunc);
-    marquee.addEventListener('touchend', resumeFunc, {passive: true});
-    marquee.addEventListener('mouseup', resumeFunc);
-    
-    let autoScrollSpeed = 0.15; // Set to exactly 0.15 as requested by the user
-    let currentX = 0; // The true fractional scroll position
+    marquee.addEventListener('mousedown', startDrag);
+    window.addEventListener('mousemove', moveDrag);
+    window.addEventListener('mouseup', endDrag);
 
-    function autoScroll() {
-      // ONLY manipulate scroll physics natively if NO momentum is active
-      if (isScrolling && setWidth > 0) {
-        // First frame initialization
-        if (currentX === 0) currentX = marquee.scrollLeft;
+    marquee.addEventListener('touchstart', startDrag, {passive: true});
+    window.addEventListener('touchmove', moveDrag, {passive: false});
+    window.addEventListener('touchend', endDrag);
 
-        currentX += autoScrollSpeed;
+    // Motor
+    function animate() {
+      if (isAutoScrolling && !isDragging && setWidth > 0) {
+        currentTranslate -= autoScrollSpeed;
         
-        // ONLY update DOM if we've accumulated at least 1 full pixel movement
-        // to avoid browser float-to-int truncation killing the motion
-        if (Math.abs(currentX - marquee.scrollLeft) >= 1) {
-          marquee.scrollLeft = Math.floor(currentX);
-          lastScrollLeft = marquee.scrollLeft; // Sync causality tracker
+        // Endless loop logic
+        if (currentTranslate < -setWidth * 25) {
+          currentTranslate += (setWidth * 10);
         }
-
-        // Seamless loop boundaries
-        if (marquee.scrollLeft > setWidth * 25) {
-          marquee.scrollLeft -= (setWidth * 10); 
-          currentX = marquee.scrollLeft;
-          lastScrollLeft = marquee.scrollLeft;
-        }
-        else if (marquee.scrollLeft < setWidth * 5) {
-          marquee.scrollLeft += (setWidth * 10); 
-          currentX = marquee.scrollLeft;
-          lastScrollLeft = marquee.scrollLeft;
-        }
-      } else {
-        // Sync our true X tracker with the actual manual position
-        currentX = marquee.scrollLeft;
+        
+        track.style.transform = `translateX(${currentTranslate}px)`;
       }
-      requestAnimationFrame(autoScroll);
+      requestAnimationFrame(animate);
     }
     
-    requestAnimationFrame(autoScroll);
+    requestAnimationFrame(animate);
   }
 });
