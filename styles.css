@@ -598,60 +598,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-color: transparent;
 }
 
-/* Uiverse Glowing Border Implementation */
-.glowing-card {
-  position: relative;
-  z-index: 1;
-}
-
-.glowing-card .dots_border {
-  --size_border: calc(100% + 4px);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: var(--size_border);
-  height: var(--size_border);
-  background-color: transparent;
-  border-radius: inherit;
-  z-index: -1;
-  pointer-events: none;
-  
-  /* Restrict rendering to ONLY the 2px unpadded outer edge to avoid internal artifacts */
-  padding: 2px;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
-.glowing-card .dots_border::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: center;
-  width: 200%;
-  height: 200%;
-  background-color: var(--secondary);
-  mask: conic-gradient(transparent 0deg, transparent 270deg, white 360deg);
-  -webkit-mask: conic-gradient(transparent 0deg, transparent 270deg, white 360deg);
-  animation: glow-rotate 3s linear infinite;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* Show glow only on hover for elegance, or always if they prefer. Let's do hover. */
-.glowing-card:hover .dots_border::before {
-  opacity: 1;
-}
-
-@keyframes glow-rotate {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
 /* ---------- Footer ---------- */
 .site-footer {
   background: var(--surface-container-low);

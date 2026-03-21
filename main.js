@@ -109,19 +109,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- Glowing Card Borders ---------- */
-  const cards = document.querySelectorAll('.card, .reason-card, .value-cell, .module-card, .visionary-card');
-  cards.forEach(card => {
-    card.classList.add('glowing-card');
-    
-    // We must allow the 2px border expansion to be visible
-    if(window.getComputedStyle(card).overflow === 'hidden') {
-      card.style.overflow = 'visible';
-    }
-
-    const border = document.createElement('div');
-    border.className = 'dots_border';
-    card.appendChild(border);
-  });
-
 });
