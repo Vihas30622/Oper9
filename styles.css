@@ -128,7 +128,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   scrollbar-width: none;
-  scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: auto; /* Required for JS smooth scroll */
 }
@@ -136,7 +135,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .interactive-marquee .visionary-card {
   min-width: 260px;
-  scroll-snap-align: center;
   flex-shrink: 0;
   text-align: center;
   background: var(--surface-container-lowest);

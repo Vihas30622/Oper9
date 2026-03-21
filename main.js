@@ -143,21 +143,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isScrolling = true;
     let interactionTimeout;
+    let lastScrollLeft = 0;
     
     // Exact visual synchronization measurement
-    // The precise integer distance between the start of Set 1 and Set 2
     let setWidth = 0;
     setTimeout(() => {
       const allCards = marquee.querySelectorAll('.visionary-card');
       if (allCards.length > 5) {
         setWidth = allCards[5].offsetLeft - allCards[0].offsetLeft;
         marquee.scrollLeft = setWidth * 15; // Set precisely in the middle!
+        lastScrollLeft = marquee.scrollLeft;
       }
     }, 500);
 
     // ANY physical movement (touch, mouse, wheel, MOMENTUM physics) fires the 'scroll' event.
     // By exclusively debouncing this, we NEVER kill a native momentum swipe mid-flight!
     marquee.addEventListener('scroll', () => {
+      // Causality Check: Did our internal autoScroll engine trigger this?
+      if (Math.abs(marquee.scrollLeft - lastScrollLeft) <= 1) {
+        return; // Ignore engine-driven scrolls
+      }
+      
+      // If we reach here, it's a real user swipe or momentum coasting!
       isScrolling = false;
       clearTimeout(interactionTimeout);
       interactionTimeout = setTimeout(() => {
@@ -176,14 +183,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // ONLY manipulate scroll physics natively if NO momentum is active
       if (isScrolling && setWidth > 0) {
         marquee.scrollLeft += autoScrollSpeed;
+        lastScrollLeft = marquee.scrollLeft; // Sync causality tracker
 
         // If they drift extremely far, secretly jump them back by PERFECT visual exact blocks
         // We only do this when momentum is entirely dead so we never cause an abrupt halt.
         if (marquee.scrollLeft > setWidth * 25) {
           marquee.scrollLeft -= (setWidth * 10); 
+          lastScrollLeft = marquee.scrollLeft;
         }
         else if (marquee.scrollLeft < setWidth * 5) {
           marquee.scrollLeft += (setWidth * 10); 
+          lastScrollLeft = marquee.scrollLeft;
         }
       }
       requestAnimationFrame(autoScroll);
