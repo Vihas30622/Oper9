@@ -371,6 +371,94 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .btn-outline:hover { background: rgba(255,255,255,0.1); }
 .btn-full { width: 100%; }
 
+/* ---------- Animated Uiverse CTA ---------- */
+.animated-cta {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ background: transparent;
+ padding: 0;
+ font-size: inherit;
+ font-family: inherit;
+ width: 15rem; /* Wide enough for 'Schedule Consultation' */
+ height: 3rem;
+}
+
+.animated-cta .circle {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ display: block;
+ margin: 0;
+ width: 3rem;
+ height: 3rem;
+ background: var(--primary);
+ border-radius: 1.625rem;
+}
+
+.animated-cta .circle .icon {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ margin: auto;
+ background: var(--on-primary);
+}
+
+.animated-cta .circle .icon.arrow {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ left: 0.625rem;
+ width: 1.125rem;
+ height: 0.125rem;
+ background: none;
+}
+
+.animated-cta .circle .icon.arrow::before {
+ position: absolute;
+ content: "";
+ top: -0.29rem;
+ right: 0.0625rem;
+ width: 0.625rem;
+ height: 0.625rem;
+ border-top: 0.125rem solid var(--on-primary);
+ border-right: 0.125rem solid var(--on-primary);
+ transform: rotate(45deg);
+}
+
+.animated-cta .button-text {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 0.75rem 0;
+ margin: 0 0 0 1.85rem;
+ color: var(--primary);
+ font-weight: 800;
+ line-height: 1.6;
+ text-align: center;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ font-size: 0.8125rem;
+}
+
+.animated-cta:hover .circle {
+ width: 100%;
+}
+
+.animated-cta:hover .circle .icon.arrow {
+ background: var(--on-primary);
+ transform: translate(1rem, 0);
+}
+
+.animated-cta:hover .button-text {
+ color: var(--on-primary);
+}
+
 /* ---------- Section Wrappers ---------- */
 .section { padding: 5rem 1.5rem; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
