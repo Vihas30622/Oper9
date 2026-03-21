@@ -189,24 +189,34 @@ document.addEventListener('DOMContentLoaded', () => {
     marquee.addEventListener('touchend', resumeFunc, {passive: true});
     marquee.addEventListener('mouseup', resumeFunc);
     
-    let autoScrollSpeed = 0.17; // Specialized cinematic speed requested by the user
+    let autoScrollSpeed = 0.1; // Slower cinematic speed requested by the user
+    let currentX = 0; // Fractional position tracker to prevent integer truncation
 
     function autoScroll() {
       // ONLY manipulate scroll physics natively if NO momentum is active
       if (isScrolling && setWidth > 0) {
-        marquee.scrollLeft += autoScrollSpeed;
+        // Initialize currentX if first frame
+        if (currentX === 0) currentX = marquee.scrollLeft;
+
+        currentX += autoScrollSpeed;
+        marquee.scrollLeft = currentX; 
         lastScrollLeft = marquee.scrollLeft; // Sync causality tracker
 
         // If they drift extremely far, secretly jump them back by PERFECT visual exact blocks
         // We only do this when momentum is entirely dead so we never cause an abrupt halt.
         if (marquee.scrollLeft > setWidth * 25) {
           marquee.scrollLeft -= (setWidth * 10); 
+          currentX = marquee.scrollLeft;
           lastScrollLeft = marquee.scrollLeft;
         }
         else if (marquee.scrollLeft < setWidth * 5) {
           marquee.scrollLeft += (setWidth * 10); 
+          currentX = marquee.scrollLeft;
           lastScrollLeft = marquee.scrollLeft;
         }
+      } else {
+        // When not auto-scrolling (user manual action), sync the fractional tracker
+        currentX = marquee.scrollLeft;
       }
       requestAnimationFrame(autoScroll);
     }
