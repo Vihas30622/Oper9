@@ -26,7 +26,7 @@
   --surface: #b0afa9;
   --surface-dim: #9b9a95;
   --surface-bright: #bcbbb5;
-  --surface-container-lowest: #b9b8b2;
+  --surface-container-lowest: #e8e7e1; /* Boosted for strong card contrast */
   --surface-container-low: #b5b4ae;
   --surface-container: #b0afa9;
   --surface-container-high: #a5a49f;
