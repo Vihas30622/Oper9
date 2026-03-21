@@ -118,10 +118,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
-/* Interactive Visionary Strip */
-.visionary-strip {
+/* Interactive Marquee */
+.interactive-marquee {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
   overflow-x: auto;
   padding: 1rem 0 3rem;
   margin: 0 -1.5rem;
@@ -130,17 +130,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: auto; /* Required for JS smooth scroll */
 }
-.visionary-strip::-webkit-scrollbar { display: none; }
+.interactive-marquee::-webkit-scrollbar { display: none; }
 
-@media (min-width: 768px) {
-  .visionary-strip {
-    margin: 0 auto;
-    padding-left: 0;
-    padding-right: 0;
-    max-width: 1200px;
-    justify-content: center;
-  }
+.interactive-marquee .visionary-card {
+  min-width: 260px;
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  text-align: center;
+  background: var(--surface-container-lowest);
+  border: 1px solid rgba(194, 199, 206, 0.1);
+  padding: 2rem;
+  border-radius: var(--radius-xl);
+  transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
+}
+
+.interactive-marquee .visionary-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 38, 63, 0.08);
 }
 
 .visionary-card {

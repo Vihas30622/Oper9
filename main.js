@@ -127,4 +127,39 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(card);
   });
 
+  /* ---------- Interactive Marquee Auto-Scroller ---------- */
+  const marquee = document.getElementById('visionary-marquee');
+  if (marquee) {
+    let isScrolling = true;
+    let autoScrollSpeed = 1;
+
+    // Pause on interactions
+    marquee.addEventListener('mouseenter', () => isScrolling = false);
+    marquee.addEventListener('mouseleave', () => isScrolling = true);
+    marquee.addEventListener('touchstart', () => isScrolling = false, {passive: true});
+    marquee.addEventListener('touchend', () => {
+      setTimeout(() => isScrolling = true, 1500);
+    });
+
+    function autoScroll() {
+      if (isScrolling) {
+        marquee.scrollLeft += autoScrollSpeed;
+        
+        // When we scroll past the first set, jump back to start seamlessly
+        // The first set ends halfway through the total scroll width.
+        // max scrollLeft is scrollWidth - clientWidth
+        const maxScroll = marquee.scrollWidth - marquee.clientWidth;
+        if (marquee.scrollLeft >= maxScroll - 5) {
+          marquee.scrollLeft = 1; // Seamless jump
+        }
+      }
+      requestAnimationFrame(autoScroll);
+    }
+    
+    // Start after a slight delay
+    setTimeout(() => {
+      requestAnimationFrame(autoScroll);
+    }, 1000);
+  }
+
 });
