@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Oper9 | Architectural Precision</title>
+  <meta name="description" content="Get in touch with Oper9's expert advisory board. Schedule a consultation for your pharmaceutical or technology consulting needs."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; }
+    @media (min-width: 900px) { .contact-grid { grid-template-columns: 1.2fr 1fr; } }
+
+    .form-card {
+      background: var(--surface-container-lowest);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: 0 24px 56px rgba(25,28,30,0.07);
+    }
+
+    .map-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: var(--surface-container-high);
+    }
+    .map-overlay {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 2rem; text-align: center;
+    }
+    .map-dot-pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+      background-size: 20px 20px;
+      opacity: 0.08;
+      pointer-events: none;
+    }
+    @media (min-width: 900px) { .map-box { aspect-ratio: 4/3; } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img"/>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="why-us.html" data-page="why-us.html">Why Us</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact Expert</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-drawer"/>
+      <button class="drawer-close" id="menu-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-page="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="services.html" data-page="services.html"><span class="material-symbols-outlined">grid_view</span>Services</a>
+      <a href="about.html" data-page="about.html"><span class="material-symbols-outlined">info</span>About</a>
+      <a href="why-us.html" data-page="why-us.html"><span class="material-symbols-outlined">insights</span>Why Us</a>
+      <a href="contact.html" data-page="contact.html"><span class="material-symbols-outlined">mail</span>Contact</a>
+    </nav>
+    <a href="contact.html" class="drawer-cta">Contact Expert</a>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="page-hero" style="padding-bottom:4rem;">
+    <div class="orb" style="width:360px;height:360px;background:rgba(0,107,95,0.2);top:-60px;right:-80px;"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+      <span class="page-hero-tag">Connect</span>
+      <h1 class="page-hero-title">Architectural<br/>Precision in Support.</h1>
+      <p class="page-hero-subtitle">Inquire about our Clinical Intelligence frameworks or schedule a consultation with our primary advisory board. We respond within 24 hours.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT CONTENT -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="form-card reveal">
+          <h2 style="font-size:1.25rem;font-weight:800;color:var(--primary);margin-bottom:1.75rem;letter-spacing:-0.03em;">Send an Inquiry</h2>
+          <form id="contact-form" novalidate style="display:flex;flex-direction:column;gap:1.25rem;">
+            <div class="form-group">
+              <label class="form-label" for="name">Full Name</label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="Dr. Julian Vane" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="j.vane@biotech.com" required/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000"/>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="service">Area of Interest</label>
+              <select class="form-input" id="service" name="service" style="appearance:none;cursor:pointer;">
+                <option value="" disabled selected>Select a service area...</option>
+                <option value="regulatory">Regulatory Services</option>
+                <option value="pharmacovigilance">Pharmacovigilance</option>
+                <option value="publishing">Publishing Services</option>
+                <option value="webdev">Web Development</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">Consultation Details</label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="Describe your inquiry..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" style="padding:1rem;font-size:1rem;gap:0.625rem;">
+              Send Inquiry
+              <span class="material-symbols-outlined" style="font-size:1.125rem;">send</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Info + Map -->
+        <div style="display:flex;flex-direction:column;gap:2rem;">
+          <div class="reveal reveal-delay-1" style="display:flex;flex-direction:column;gap:1.5rem;">
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <span class="material-symbols-outlined">location_on</span>
+              </div>
+              <div>
+                <p class="contact-label">Headquarters</p>
+                <p style="font-size:0.9375rem;font-weight:500;color:var(--on-surface);line-height:1.5;">100 Innovation Plaza,<br/>Pharma District, Boston, MA</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <span class="material-symbols-outlined">mail</span>
+              </div>
+              <div>
+                <p class="contact-label">Digital Reach</p>
+                <p style="font-size:0.9375rem;font-weight:500;color:var(--on-surface);">expert@oper9.com</p>
+                <p style="font-size:0.9375rem;font-weight:500;color:var(--on-surface);">press@oper9.com</p>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-icon">
+                <span class="material-symbols-outlined">call</span>
+              </div>
+              <div>
+                <p class="contact-label">Direct Line</p>
+                <p style="font-size:0.9375rem;font-weight:500;color:var(--on-surface);">+1 (800) OPER9-HQ</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="map-box reveal reveal-delay-2">
+            <div class="map-dot-pattern"></div>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8LkQE-tBF-LyjUTvMNYbb5fYeRURElBWpqCDtVq5bTV1dj3hFMUQ8bmjUb2NKy1vqv7AO9VH2kOcsOACRidRm6rz5nrTYkADJ1zt8Ssa9BtsWQRqD6dTGRjzpaUniI_-W-8Og3ktLeJHh8LUYikHLKnqh0ogOGyGIbhHoPO4g0C373XUNjWYMQXlNdhCE3DIi4IXMjGlSmUNEt6iWo-QEZeFqjHLjuU0MCUUQt38AvKIdwTOM0nu4hvWQgP4i8EYWhBc6BUyOu_w" alt="Location map" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.18;filter:grayscale(100%);pointer-events:none;"/>
+            <div class="map-overlay">
+              <div style="width:56px;height:56px;border-radius:50%;background:rgba(0,38,63,0.08);display:flex;align-items:center;justify-content:center;margin-bottom:1rem;">
+                <span class="material-symbols-outlined" style="color:var(--primary);font-size:1.75rem;">map</span>
+              </div>
+              <h4 style="font-weight:700;color:var(--primary);margin-bottom:0.375rem;">Location Intelligence</h4>
+              <p style="font-size:0.8125rem;color:var(--on-surface-variant);">Boston, MA — Global HQ</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:0.75rem;">
+        <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-sm"/>
+      </div>
+      <p>Architectural precision in pharmaceutical technology consulting. High-stakes intelligence for global innovators.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-links-group">
+        <h4>Expertise</h4>
+        <a href="services.html">Solutions</a>
+        <a href="why-us.html">Intelligence</a>
+        <a href="about.html">Advisory</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" data-page="index.html">
+    <span class="material-symbols-outlined">home</span>Home
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services.html">
+    <span class="material-symbols-outlined">grid_view</span>Services
+  </a>
+  <a href="why-us.html" class="bottom-nav-item" data-page="why-us.html">
+    <span class="material-symbols-outlined">insights</span>Why Us
+  </a>
+  <a href="contact.html" class="bottom-nav-item active" data-page="contact.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">person</span>Contact
+  </a>
+</nav>
+<div class="bottom-nav-spacer"></div>
+<script src="main.js"></script>
+</body>
+</html>

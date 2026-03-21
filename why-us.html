@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Why Choose Oper9 | Architectural Precision</title>
+  <meta name="description" content="Discover why leading pharmaceutical firms choose Oper9 for regulatory consulting, tech integration and domain expertise."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .reason-card {
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
+    }
+    .reason-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(0,38,63,0.1); }
+    .reason-title { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 0.875rem; }
+    .reason-desc { font-size: 0.9375rem; line-height: 1.65; }
+    .tag-chip {
+      display: inline-block;
+      padding: 0.2rem 0.625rem;
+      border-radius: 0.25rem;
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .reasons-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 640px) { .reasons-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .reasons-grid { grid-template-columns: 1fr 1fr 1fr; } .reasons-grid .span-2 { grid-column: span 2; } }
+
+    .stat-bar { display: flex; flex-direction: column; gap: 1.5rem; }
+    .stat-bar-item { display: flex; flex-direction: column; gap: 0.375rem; }
+    .bar-label { display: flex; justify-content: space-between; font-size: 0.8125rem; font-weight: 600; }
+    .bar-track { height: 6px; background: var(--surface-container-high); border-radius: var(--radius-full); overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: var(--radius-full); background: linear-gradient(to right, var(--secondary), var(--secondary-fixed-dim)); transform-origin: left; animation: barGrow 1.4s var(--transition-quint) forwards; transform: scaleX(0); }
+    @keyframes barGrow { to { transform: scaleX(1); } }
+    .bar-fill.animated { transform: scaleX(1); }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img"/>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="why-us.html" data-page="why-us.html">Why Us</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact Expert</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-drawer"/>
+      <button class="drawer-close" id="menu-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-page="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="services.html" data-page="services.html"><span class="material-symbols-outlined">grid_view</span>Services</a>
+      <a href="about.html" data-page="about.html"><span class="material-symbols-outlined">info</span>About</a>
+      <a href="why-us.html" data-page="why-us.html"><span class="material-symbols-outlined">insights</span>Why Us</a>
+      <a href="contact.html" data-page="contact.html"><span class="material-symbols-outlined">mail</span>Contact</a>
+    </nav>
+    <a href="contact.html" class="drawer-cta">Contact Expert</a>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="orb" style="width:440px;height:440px;background:rgba(0,107,95,0.2);top:-100px;right:-120px;"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+      <div style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.3rem 0.875rem;background:rgba(118,244,224,0.15);border:1px solid rgba(118,244,224,0.25);border-radius:var(--radius-full);margin-bottom:1rem;">
+        <span style="font-size:0.6rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--secondary-fixed-dim);">Why Oper9</span>
+      </div>
+      <h1 class="page-hero-title">Precision in <span style="color:var(--secondary-fixed-dim);">Consulting.</span></h1>
+      <p class="page-hero-subtitle">We bridge the gap between complex pharmaceutical regulations and agile technological execution — backing every decision with data and decades of domain mastery.</p>
+    </div>
+  </section>
+
+  <!-- REASONS BENTO -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:2.5rem;">
+        <span class="section-tag">Our Differentiators</span>
+        <h2 class="section-title">Why We Stand Apart</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reasons-grid">
+        <!-- Global Standards -->
+        <div class="reason-card reveal" style="background:var(--primary);color:var(--on-primary);">
+          <div class="orb" style="width:120px;height:120px;background:rgba(255,255,255,0.07);top:-20px;right:-20px;filter:blur(20px);"></div>
+          <span class="material-symbols-outlined" style="color:var(--secondary-fixed-dim);font-size:2rem;margin-bottom:1rem;display:block;">language</span>
+          <h3 class="reason-title">Commitment to Global Standards</h3>
+          <p class="reason-desc" style="color:var(--on-primary-container);">Navigating GxP, HIPAA, and GDPR with architectural rigor. Our frameworks are built for international scalability and total compliance.</p>
+        </div>
+        <!-- Domain Expertise -->
+        <div class="reason-card reveal reveal-delay-1" style="background:var(--surface-container-low);border:1px solid rgba(194,199,206,0.1);">
+          <div style="width:44px;height:44px;border-radius:0.625rem;background:var(--surface-container-highest);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+            <span class="material-symbols-outlined" style="color:var(--primary);">science</span>
+          </div>
+          <h3 class="reason-title" style="color:var(--primary);">Strong Domain Expertise</h3>
+          <p class="reason-desc" style="color:var(--on-surface-variant);">Deep-rooted knowledge in clinical trials, laboratory informatics, and supply chain integrity. We speak the language of scientists and engineers.</p>
+          <div style="display:flex;gap:0.5rem;margin-top:1.25rem;flex-wrap:wrap;">
+            <span class="tag-chip" style="background:var(--surface-container-lowest);color:var(--primary);border:1px solid rgba(194,199,206,0.3);">PHARMA</span>
+            <span class="tag-chip" style="background:var(--surface-container-lowest);color:var(--primary);border:1px solid rgba(194,199,206,0.3);">BIOTECH</span>
+            <span class="tag-chip" style="background:var(--surface-container-lowest);color:var(--primary);border:1px solid rgba(194,199,206,0.3);">MEDTECH</span>
+          </div>
+        </div>
+        <!-- Independent -->
+        <div class="reason-card reveal reveal-delay-2" style="background:linear-gradient(135deg,var(--primary-container),var(--primary));color:var(--on-primary);">
+          <span class="material-symbols-outlined" style="color:var(--secondary-fixed-dim);font-size:2rem;margin-bottom:1rem;display:block;">psychology</span>
+          <h3 class="reason-title">Independent Problem-Solving</h3>
+          <p class="reason-desc" style="color:rgba(255,255,255,0.82);">We don't just follow blueprints — we design them. Our autonomous methodology ensures objective solutions tailored to your unique infrastructure challenges.</p>
+        </div>
+        <!-- Experience -->
+        <div class="reason-card span-2 reveal reveal-delay-1" style="background:var(--surface-container-lowest);box-shadow:0 20px 48px rgba(25,28,30,0.06);">
+          <div style="display:flex;align-items:center;gap:1.25rem;margin-bottom:1.25rem;flex-wrap:wrap;">
+            <span style="font-size:3rem;font-weight:900;letter-spacing:-0.04em;color:var(--secondary);" data-count="20" data-suffix="+">20+</span>
+            <div style="width:2px;height:2.5rem;background:var(--outline-variant);"></div>
+            <div style="font-size:0.7rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--on-surface-variant);line-height:1.4;">Years Combined<br/>Experience</div>
+          </div>
+          <h3 class="reason-title" style="color:var(--primary);">Decades of Legacy</h3>
+          <p class="reason-desc" style="color:var(--on-surface-variant);">A multi-generational collective of industry veterans and tech visionaries delivering battle-tested strategies across three continents.</p>
+        </div>
+        <!-- Stats bar -->
+        <div class="reason-card reveal" style="background:var(--surface-container-low);border:1px solid rgba(194,199,206,0.1);">
+          <h3 style="font-size:1.125rem;font-weight:800;color:var(--primary);margin-bottom:1.5rem;">Performance Metrics</h3>
+          <div class="stat-bar">
+            <div class="stat-bar-item">
+              <div class="bar-label"><span style="color:var(--on-surface-variant);">Client Retention</span><span style="color:var(--secondary);">98%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:98%;"></div></div>
+            </div>
+            <div class="stat-bar-item">
+              <div class="bar-label"><span style="color:var(--on-surface-variant);">Submission Success</span><span style="color:var(--secondary);">96%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:96%;animation-delay:0.2s;"></div></div>
+            </div>
+            <div class="stat-bar-item">
+              <div class="bar-label"><span style="color:var(--on-surface-variant);">On-Time Delivery</span><span style="color:var(--secondary);">99%</span></div>
+              <div class="bar-track"><div class="bar-fill" style="width:99%;animation-delay:0.4s;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND MARK SECTION -->
+  <section class="section" style="background:var(--surface-container-low);text-align:center;">
+    <div class="section-inner" style="max-width:480px;">
+      <div class="reveal" style="display:flex;flex-direction:column;align-items:center;gap:1.25rem;">
+        <div style="width:72px;height:72px;background:var(--primary);border-radius:1.125rem;display:flex;align-items:center;justify-content:center;transform:rotate(3deg);box-shadow:0 12px 32px rgba(0,38,63,0.2);">
+          <span style="color:#fff;font-size:1.5rem;font-weight:900;letter-spacing:-0.04em;">O9</span>
+        </div>
+        <p style="font-size:0.6875rem;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;color:var(--on-surface-variant);">Architectural Precision Framework</p>
+        <a href="contact.html" class="btn btn-primary" style="display:inline-flex;">Work With Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--primary);padding:5rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <div class="orb" style="width:350px;height:350px;background:rgba(0,107,95,0.2);top:-80px;left:50%;transform:translateX(-50%);"></div>
+    <div style="position:relative;z-index:2;max-width:540px;margin:0 auto;">
+      <h2 style="font-size:clamp(1.75rem,5vw,2.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:1rem;" class="reveal">Convinced?</h2>
+      <p style="color:var(--on-primary-container);margin-bottom:2rem;line-height:1.65;" class="reveal reveal-delay-1">Let's start a conversation about your pharmaceutical consulting needs.</p>
+      <a href="contact.html" class="btn btn-secondary reveal reveal-delay-2" style="display:inline-flex;padding:1rem 2.5rem;font-size:1rem;">Contact an Expert</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:0.75rem;">
+        <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-sm"/>
+      </div>
+      <p>Architectural precision for the future of pharmaceutical infrastructure and technology consulting.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-links-group">
+        <h4>Resources</h4>
+        <a href="services.html">Solutions</a>
+        <a href="about.html">Expertise</a>
+        <a href="why-us.html">Intelligence</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <a href="contact.html">Advisory</a>
+        <a href="contact.html">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" data-page="index.html">
+    <span class="material-symbols-outlined">home</span>Home
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services.html">
+    <span class="material-symbols-outlined">grid_view</span>Services
+  </a>
+  <a href="why-us.html" class="bottom-nav-item active" data-page="why-us.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">insights</span>Why Us
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact.html">
+    <span class="material-symbols-outlined">person</span>Contact
+  </a>
+</nav>
+<a href="contact.html" class="fab"><span class="material-symbols-outlined">chat</span></a>
+<div class="bottom-nav-spacer"></div>
+<script src="main.js"></script>
+</body>
+</html>

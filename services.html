@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Services | Oper9 Pharma-Tech Consulting</title>
+  <meta name="description" content="Explore Oper9's core service modules: Regulatory, Pharmacovigilance, Publishing and Web Development."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .module-num {
+      font-size: 0.6rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--outline);
+    }
+    .module-card {
+      border-radius: var(--radius-xl);
+      padding: 2.25rem;
+      transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
+    }
+    .module-card:hover { transform: translateY(-5px); box-shadow: 0 20px 48px rgba(0,38,63,0.1); }
+    .module-icon-wrap {
+      width: 48px; height: 48px;
+      border-radius: 0.625rem;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .module-title { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 1rem; }
+    .bullet-list { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+    .bullet-list li { display: flex; align-items: center; gap: 0.75rem; font-size: 0.875rem; font-weight: 500; }
+    .bullet-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--secondary); flex-shrink: 0; }
+
+    /* Services bento */
+    .services-bento { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 768px) { .services-bento { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .services-bento { grid-template-columns: 1fr 1fr 1fr; } .services-bento .bento-wide { grid-column: span 2; } }
+
+    /* Process steps */
+    .process-steps { display: grid; grid-template-columns: 1fr; gap: 1.5rem; margin-top: 2rem; }
+    .process-step { display: flex; gap: 1.25rem; align-items: flex-start; }
+    .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--secondary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; flex-shrink: 0; }
+    @media (min-width: 768px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .process-steps { grid-template-columns: repeat(4, 1fr); } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img"/>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="why-us.html" data-page="why-us.html">Why Us</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact Expert</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-drawer"/>
+      <button class="drawer-close" id="menu-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-page="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="services.html" data-page="services.html"><span class="material-symbols-outlined">grid_view</span>Services</a>
+      <a href="about.html" data-page="about.html"><span class="material-symbols-outlined">info</span>About</a>
+      <a href="why-us.html" data-page="why-us.html"><span class="material-symbols-outlined">insights</span>Why Us</a>
+      <a href="contact.html" data-page="contact.html"><span class="material-symbols-outlined">mail</span>Contact</a>
+    </nav>
+    <a href="contact.html" class="drawer-cta">Contact Expert</a>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="page-hero">
+    <div class="orb" style="width:400px;height:400px;background:rgba(0,107,95,0.2);top:-80px;right:-120px;"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+      <div style="display:inline-block;background:rgba(118,244,224,0.15);border:1px solid rgba(118,244,224,0.3);padding:0.3rem 0.9rem;border-radius:var(--radius-full);margin-bottom:1rem;">
+        <span style="font-size:0.6rem;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--secondary-fixed-dim);">Consulting Intelligence</span>
+      </div>
+      <h1 class="page-hero-title">Architectural <br/>Precision for Pharma.</h1>
+      <p class="page-hero-subtitle">Deploying clinical rigor to technical infrastructure. Explore our specialized frameworks and modular service offerings.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES BENTO -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:2.5rem;">
+        <span class="section-tag">Our Modules</span>
+        <h2 class="section-title">Core Solutions</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="services-bento">
+        <!-- Regulatory -->
+        <div class="module-card reveal" style="background:var(--surface-container-lowest);border:1px solid rgba(194,199,206,0.1);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+            <div class="module-icon-wrap" style="background:rgba(0,38,63,0.08);">
+              <span class="material-symbols-outlined" style="color:var(--primary);">gavel</span>
+            </div>
+            <span class="module-num">Module 01</span>
+          </div>
+          <h2 class="module-title" style="color:var(--primary);">Regulatory Services</h2>
+          <ul class="bullet-list" style="color:var(--on-surface-variant);">
+            <li><span class="bullet-dot"></span>Product registration</li>
+            <li><span class="bullet-dot"></span>Lifecycle management</li>
+            <li><span class="bullet-dot"></span>Market expansion</li>
+            <li><span class="bullet-dot"></span>Site transfers</li>
+          </ul>
+        </div>
+        <!-- Pharmacovigilance -->
+        <div class="module-card reveal reveal-delay-1" style="background:var(--primary);color:var(--on-primary);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+            <div class="module-icon-wrap" style="background:var(--secondary);">
+              <span class="material-symbols-outlined" style="color:#fff;font-variation-settings:'FILL' 1;">health_and_safety</span>
+            </div>
+            <span style="font-size:0.6rem;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:var(--on-primary-container);">Module 02</span>
+          </div>
+          <h2 class="module-title">Pharmacovigilance</h2>
+          <ul class="bullet-list" style="color:rgba(255,255,255,0.75);">
+            <li><span class="material-symbols-outlined" style="font-size:0.875rem;color:var(--secondary-fixed-dim);">check_circle</span>Safety monitoring</li>
+            <li><span class="material-symbols-outlined" style="font-size:0.875rem;color:var(--secondary-fixed-dim);">check_circle</span>Compliance systems</li>
+            <li><span class="material-symbols-outlined" style="font-size:0.875rem;color:var(--secondary-fixed-dim);">check_circle</span>Risk management</li>
+            <li><span class="material-symbols-outlined" style="font-size:0.875rem;color:var(--secondary-fixed-dim);">check_circle</span>Signal detection</li>
+          </ul>
+        </div>
+        <!-- Publishing -->
+        <div class="module-card reveal reveal-delay-2" style="background:var(--surface-container-low);border:1px solid rgba(194,199,206,0.15);">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+            <div class="module-icon-wrap" style="background:var(--surface-container-high);">
+              <span class="material-symbols-outlined" style="color:var(--primary);">auto_stories</span>
+            </div>
+            <span class="module-num">Module 03</span>
+          </div>
+          <h2 class="module-title" style="color:var(--primary);">Publishing Services</h2>
+          <div style="display:flex;flex-direction:column;gap:1rem;">
+            <div>
+              <span style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--secondary);">Structure</span>
+              <p style="font-size:0.875rem;color:var(--on-surface-variant);margin-top:0.25rem;">Content structuring &amp; data collection</p>
+            </div>
+            <div>
+              <span style="font-size:0.6rem;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--secondary);">Delivery</span>
+              <p style="font-size:0.875rem;color:var(--on-surface-variant);margin-top:0.25rem;">Accessibility &amp; multi-channel output</p>
+            </div>
+          </div>
+        </div>
+        <!-- Web Dev (wide on lg) -->
+        <div class="module-card bento-wide reveal reveal-delay-3" style="background:var(--surface-container-lowest);border:1px solid rgba(194,199,206,0.1);position:relative;overflow:hidden;">
+          <div class="orb" style="width:220px;height:220px;background:rgba(0,107,95,0.06);bottom:-60px;right:-40px;filter:blur(60px);"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem;">
+            <div class="module-icon-wrap" style="background:var(--surface-container);">
+              <span class="material-symbols-outlined" style="color:var(--primary);">code</span>
+            </div>
+            <span class="module-num">Module 04</span>
+          </div>
+          <h2 class="module-title" style="color:var(--primary);">Web Development</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;position:relative;z-index:1;">
+            <div style="display:flex;align-items:flex-start;gap:0.875rem;padding:0.875rem;border-radius:var(--radius-md);background:var(--background);">
+              <span class="material-symbols-outlined" style="color:var(--secondary);">web</span>
+              <div>
+                <h3 style="font-size:0.875rem;font-weight:700;color:var(--primary);">Industry-specific Apps</h3>
+                <p style="font-size:0.75rem;color:var(--on-surface-variant);margin-top:0.125rem;">Custom web apps for labs &amp; pharma.</p>
+              </div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.875rem;padding:0.875rem;border-radius:var(--radius-md);background:var(--background);">
+              <span class="material-symbols-outlined" style="color:var(--secondary);">brush</span>
+              <div>
+                <h3 style="font-size:0.875rem;font-weight:700;color:var(--primary);">UI/UX Design</h3>
+                <p style="font-size:0.75rem;color:var(--on-surface-variant);margin-top:0.125rem;">Human-centric precision interfaces.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR PROCESS -->
+  <section class="section" style="background:var(--surface-container-low);">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">How We Work</span>
+        <h2 class="section-title">Our Process</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="step-num">01</div>
+          <div>
+            <h4 style="font-weight:700;color:var(--primary);margin-bottom:0.375rem;">Discovery</h4>
+            <p style="font-size:0.875rem;color:var(--on-surface-variant);">Deep-dive into your regulatory landscape, infrastructure and goals.</p>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="step-num">02</div>
+          <div>
+            <h4 style="font-weight:700;color:var(--primary);margin-bottom:0.375rem;">Architecture</h4>
+            <p style="font-size:0.875rem;color:var(--on-surface-variant);">Design a precision-engineered framework tailored to your needs.</p>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="step-num">03</div>
+          <div>
+            <h4 style="font-weight:700;color:var(--primary);margin-bottom:0.375rem;">Execution</h4>
+            <p style="font-size:0.875rem;color:var(--on-surface-variant);">Deliver with surgical precision across all regulatory and tech touchpoints.</p>
+          </div>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="step-num">04</div>
+          <div>
+            <h4 style="font-weight:700;color:var(--primary);margin-bottom:0.375rem;">Continuity</h4>
+            <p style="font-size:0.875rem;color:var(--on-surface-variant);">Ongoing support and intelligence for sustained compliance excellence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--primary);padding:5rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <div class="orb" style="width:350px;height:350px;background:rgba(0,107,95,0.25);top:-80px;left:50%;transform:translateX(-50%);"></div>
+    <div style="position:relative;z-index:2;max-width:540px;margin:0 auto;">
+      <h2 style="font-size:clamp(1.75rem,5vw,2.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:1rem;" class="reveal">Ready to begin?</h2>
+      <p style="color:var(--on-primary-container);margin-bottom:2rem;line-height:1.65;" class="reveal reveal-delay-1">Let's architect your next phase of pharmaceutical excellence together.</p>
+      <a href="contact.html" class="btn btn-secondary reveal reveal-delay-2" style="display:inline-flex;padding:1rem 2.5rem;font-size:1rem;">Schedule Consultation</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:0.75rem;">
+        <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-sm"/>
+      </div>
+      <p>Empowering pharmaceutical leaders through architectural precision and technical excellence.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-links-group">
+        <h4>Capabilities</h4>
+        <a href="services.html">Solutions</a>
+        <a href="about.html">Expertise</a>
+        <a href="why-us.html">Intelligence</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <a href="about.html">Advisory</a>
+        <a href="contact.html">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" data-page="index.html">
+    <span class="material-symbols-outlined">home</span>Home
+  </a>
+  <a href="services.html" class="bottom-nav-item active" data-page="services.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">grid_view</span>Services
+  </a>
+  <a href="why-us.html" class="bottom-nav-item" data-page="why-us.html">
+    <span class="material-symbols-outlined">insights</span>Why Us
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact.html">
+    <span class="material-symbols-outlined">person</span>Contact
+  </a>
+</nav>
+
+<a href="contact.html" class="fab" aria-label="Contact Expert">
+  <span class="material-symbols-outlined">chat</span>
+</a>
+<div class="bottom-nav-spacer"></div>
+<script src="main.js"></script>
+</body>
+</html>

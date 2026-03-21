@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Oper9 | Pharma-Tech Consulting</title>
+  <meta name="description" content="Oper9 delivers architectural precision in pharmaceutical consulting and digital transformation. Regulatory, Pharmacovigilance, Publishing and Web Development services."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    /* ---- Home-specific styles ---- */
+    .hero-section {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(145deg, var(--primary) 0%, var(--primary-container) 60%, #0c4a6e 100%);
+      color: var(--on-primary);
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1.5rem 6rem;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-block;
+      padding: 0.3rem 0.9rem;
+      background: var(--secondary);
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border-radius: var(--radius-full);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title {
+      font-size: clamp(2.25rem, 7vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.25rem;
+    }
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--on-primary-container);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.25rem;
+    }
+    .hero-actions { display: flex; gap: 0.875rem; flex-wrap: wrap; }
+    .hero-visual {
+      display: none;
+      position: relative;
+    }
+    .hero-visual-inner {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+      backdrop-filter: blur(12px);
+    }
+    .stat-chip {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .stat-value { font-size: 1.75rem; font-weight: 900; letter-spacing: -0.04em; }
+    .stat-label { font-size: 0.6875rem; color: var(--on-primary-container); text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; }
+
+    /* Why Oper9 section */
+    .why-strip { display: flex; gap: 1.25rem; overflow-x: auto; padding-bottom: 1rem; margin: 0 -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; scrollbar-width: none; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+    .why-strip::-webkit-scrollbar { display: none; }
+    .why-card { min-width: min(88%, 360px); scroll-snap-align: center; flex-shrink: 0; border-radius: var(--radius-xl); padding: 2.5rem; position: relative; overflow: hidden; }
+
+    @media (min-width: 768px) {
+      .hero-inner { grid-template-columns: 1fr 1fr; align-items: center; }
+      .hero-visual { display: block; }
+      .why-strip { overflow-x: visible; flex-wrap: nowrap; margin: 0; padding-left: 0; padding-right: 0; }
+      .why-card { min-width: 0; flex: 1; }
+    }
+    @media (min-width: 1024px) {
+      .hero-title { font-size: 4rem; }
+    }
+
+    /* About snippet */
+    .about-img-box {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      background: var(--surface-container-high);
+    }
+
+    /* Services grid */
+    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-top: 2.5rem; }
+    .service-card { background: var(--surface-container-lowest); border-radius: var(--radius-xl); border: 1px solid rgba(194,199,206,0.1); padding: 2rem; transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,38,63,0.08); }
+    .service-icon { width: 2.5rem; height: 2.5rem; font-size: 1.5rem; color: var(--secondary); margin-bottom: 1rem; }
+    .service-title { font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+    .service-desc { font-size: 0.875rem; color: var(--on-surface-variant); line-height: 1.6; }
+    @media (min-width: 640px) { .services-grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(4, 1fr); } }
+  </style>
+</head>
+<body>
+
+<!-- ======= HEADER ======= -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img"/>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="why-us.html" data-page="why-us.html">Why Us</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact Expert</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-drawer"/>
+      <button class="drawer-close" id="menu-close" aria-label="Close menu">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-page="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="services.html" data-page="services.html"><span class="material-symbols-outlined">grid_view</span>Services</a>
+      <a href="about.html" data-page="about.html"><span class="material-symbols-outlined">info</span>About</a>
+      <a href="why-us.html" data-page="why-us.html"><span class="material-symbols-outlined">insights</span>Why Us</a>
+      <a href="contact.html" data-page="contact.html"><span class="material-symbols-outlined">mail</span>Contact</a>
+    </nav>
+    <a href="contact.html" class="drawer-cta">Contact Expert</a>
+  </div>
+</div>
+
+<main>
+  <!-- ======= HERO ======= -->
+  <section class="hero-section">
+    <div class="orb" style="width:500px;height:500px;background:rgba(0,107,95,0.18);top:-120px;right:-160px;"></div>
+    <div class="orb" style="width:360px;height:360px;background:rgba(163,203,242,0.1);bottom:-100px;left:-80px;"></div>
+    <div class="hero-inner">
+      <div>
+        <span class="hero-badge">Architectural Precision</span>
+        <h1 class="hero-title">Driving Excellence in Pharmaceutical &amp; Digital Solutions</h1>
+        <p class="hero-sub">Empowering organizations with regulatory expertise and innovative technological frameworks to navigate high-stakes environments.</p>
+        <div class="hero-actions">
+          <a href="services.html" class="btn btn-primary">Explore Services</a>
+          <a href="contact.html" class="btn btn-outline">Contact Us</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-delay-2">
+        <div class="hero-visual-inner">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div class="stat-chip">
+              <span class="stat-value" data-count="20" data-suffix="+">20+</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-chip">
+              <span class="stat-value" data-count="150" data-suffix="+">150+</span>
+              <span class="stat-label">Submissions</span>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div class="stat-chip">
+              <span class="stat-value" data-count="3">3</span>
+              <span class="stat-label">Continents</span>
+            </div>
+            <div class="stat-chip">
+              <span class="stat-value" data-count="98" data-suffix="%">98%</span>
+              <span class="stat-label">Client Retention</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT SNIPPET ======= -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div style="display:grid;grid-template-columns:1fr;gap:3rem;align-items:center;" class="bento-grid-2" id="about-grid">
+        <div class="reveal">
+          <span class="section-tag">About Oper9</span>
+          <h2 class="section-title">A Clinical Approach to Innovation</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">We bridge the gap between rigorous pharmaceutical compliance and cutting-edge software architecture. Our mission is to provide the intelligence required for seamless market entry and sustained excellence.</p>
+          <a href="about.html" class="btn btn-primary" style="margin-top:1.75rem;display:inline-flex;">Learn More</a>
+        </div>
+        <div class="about-img-box reveal reveal-delay-2">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkr9X1IwsJqI_J1MLEYSI_tGyUlfid2GGm1xTxGgLA_-FzkYwa1omkEMGECeApq_EnapDVWDCpesASfVkaGYUvWh4mvKZ3u25NSslJVIV1S2Kj-sfDV4THmqgAnATtYPULWMSfeJfBUkrg3h-SvkIDTKGoRbl1Wz6FeUaO1F0IZDxEntJfMrdDA5wHU0FK3XWqRtn5jBcdeoJDFgdGB6wWgAFFnHimvbmFt1Ng4hMt7--V3mjviyM4-CUEco9sP9m_fQL0yWN0IF8" alt="Clinical lab environment"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CORE SOLUTIONS ======= -->
+  <section class="section" style="background:var(--surface-container-low);">
+    <div class="section-inner">
+      <div class="reveal">
+        <span class="section-tag">Our Expertise</span>
+        <h2 class="section-title">Core Solutions</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal reveal-delay-1">
+          <span class="material-symbols-outlined service-icon">clinical_notes</span>
+          <h3 class="service-title">Regulatory</h3>
+          <p class="service-desc">Global submission strategies and compliance frameworks for complex market navigation.</p>
+          <a href="services.html" style="display:inline-flex;align-items:center;gap:0.25rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--secondary);">Learn more <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <span class="material-symbols-outlined service-icon">health_and_safety</span>
+          <h3 class="service-title">Pharmacovigilance</h3>
+          <p class="service-desc">Integrated safety monitoring and risk management systems designed for data integrity.</p>
+          <a href="services.html" style="display:inline-flex;align-items:center;gap:0.25rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--secondary);">Learn more <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <span class="material-symbols-outlined service-icon">auto_stories</span>
+          <h3 class="service-title">Publishing</h3>
+          <p class="service-desc">Streamlined eCTD publishing and document lifecycle management for global health authorities.</p>
+          <a href="services.html" style="display:inline-flex;align-items:center;gap:0.25rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--secondary);">Learn more <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+        </div>
+        <div class="service-card reveal reveal-delay-4">
+          <span class="material-symbols-outlined service-icon">code</span>
+          <h3 class="service-title">Web Dev</h3>
+          <p class="service-desc">Bespoke digital platforms and architectural engineering tailored to pharma standards.</p>
+          <a href="services.html" style="display:inline-flex;align-items:center;gap:0.25rem;margin-top:1rem;font-size:0.8125rem;font-weight:700;color:var(--secondary);">Learn more <span class="material-symbols-outlined" style="font-size:1rem;">arrow_forward</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= WHY OPER9 ======= -->
+  <section class="section" style="background:var(--surface);overflow:hidden;">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:2.5rem;">
+        <h2 class="section-title">Why Oper9</h2>
+        <p class="section-subtitle">Precision-engineered consulting for high-stakes environments.</p>
+      </div>
+      <div class="why-strip">
+        <div class="why-card" style="background:var(--primary);color:var(--on-primary);">
+          <span style="font-size:4rem;font-weight:900;opacity:0.15;position:absolute;right:1rem;bottom:0.5rem;line-height:1;">01</span>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;">Domain Authority</h4>
+          <p style="font-size:0.875rem;color:var(--on-primary-container);line-height:1.6;">Deep-rooted experience in global pharmaceutical regulations and standards across three continents.</p>
+        </div>
+        <div class="why-card" style="background:var(--surface-container-high);">
+          <span style="font-size:4rem;font-weight:900;opacity:0.08;position:absolute;right:1rem;bottom:0.5rem;line-height:1;color:var(--primary);">02</span>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;color:var(--primary);">Tech-First Logic</h4>
+          <p style="font-size:0.875rem;color:var(--on-surface-variant);line-height:1.6;">Leveraging automation and bespoke software to eliminate human error in submissions.</p>
+        </div>
+        <div class="why-card" style="background:var(--secondary-container);">
+          <span style="font-size:4rem;font-weight:900;opacity:0.15;position:absolute;right:1rem;bottom:0.5rem;line-height:1;color:var(--secondary);">03</span>
+          <h4 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;color:var(--primary);">Global Reach</h4>
+          <p style="font-size:0.875rem;color:var(--on-secondary-container);line-height:1.6;">Operating across Asia, Europe and North America with in-market regulatory intelligence.</p>
+        </div>
+      </div>
+      <div style="text-align:right;margin-top:1rem;">
+        <a href="why-us.html" class="btn btn-primary" style="display:inline-flex;">See all reasons <span class="material-symbols-outlined" style="font-size:1.125rem;margin-left:0.25rem;">arrow_forward</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= TESTIMONIAL ======= -->
+  <section class="section" style="background:var(--surface-container-low);">
+    <div class="section-inner">
+      <h2 class="section-title reveal" style="text-align:center;margin-bottom:2.5rem;">Professional Endorsements</h2>
+      <div class="testimonial-card reveal reveal-delay-1" style="max-width:720px;margin:0 auto;">
+        <span class="material-symbols-outlined" style="font-size:2.5rem;color:rgba(0,107,95,0.3);margin-bottom:1.25rem;display:block;">format_quote</span>
+        <p style="font-size:1.125rem;font-style:italic;color:var(--on-surface);line-height:1.7;margin-bottom:1.5rem;">"Oper9 transformed our submission process. Their architectural approach to regulatory data is unmatched in the industry."</p>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--primary-container);">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfF21RPWVmo77IHrhze27SzMt5ubFrQGOR0nxeKZBTq2Br-1e_zrstEzkYlR8FKbwmqkDC9jSloafKjnR10pRXmvZDU6EXu7R2ys5UoUVO0dyMaKA1Q3hnLAtEEIdtL0WRoRB9NZH5ogCbQud24icQhqRQQAUGmfMkccK3r9oQfD-XoRlIgotUTCTQo8QPWoYWsX0qiiQF2j9eoCouwzx-_90nbehjYck3Qp2O2oqb4nq-8O5wx27L-RRUisdHRE9nyWVkJ2XRVBw" alt="Dr. Marcus Vance"/>
+          </div>
+          <div>
+            <p style="font-weight:700;font-size:0.875rem;color:var(--primary);">Dr. Marcus Vance</p>
+            <p style="font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--on-surface-variant);">Global Ops, Biogenix</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CTA BAND ======= -->
+  <section style="background:var(--primary);padding:5rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <div class="orb" style="width:400px;height:400px;background:rgba(0,107,95,0.25);top:-100px;left:50%;transform:translateX(-50%);"></div>
+    <div style="position:relative;z-index:2;max-width:540px;margin:0 auto;">
+      <h2 style="font-size:clamp(1.75rem,5vw,2.75rem);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:1rem;" class="reveal">Ready to transform?</h2>
+      <p style="color:var(--on-primary-container);margin-bottom:2rem;line-height:1.65;" class="reveal reveal-delay-1">Schedule a consultation with our experts to architect your next clinical breakthrough.</p>
+      <a href="contact.html" class="btn btn-secondary reveal reveal-delay-2" style="display:inline-flex;padding:1rem 2.5rem;font-size:1rem;">Contact Expert</a>
+    </div>
+  </section>
+</main>
+
+<!-- ======= FOOTER ======= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:0.75rem;">
+        <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-sm"/>
+      </div>
+      <p>Architectural Precision Framework for pharmaceutical and digital transformation.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-links-group">
+        <h4>Resources</h4>
+        <a href="services.html">Solutions</a>
+        <a href="about.html">About</a>
+        <a href="why-us.html">Intelligence</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <a href="about.html">Advisory</a>
+        <a href="contact.html">Privacy</a>
+        <a href="contact.html">Terms</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Bottom Nav (Mobile) -->
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item active" data-page="index.html">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">home</span>Home
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services.html">
+    <span class="material-symbols-outlined">grid_view</span>Services
+  </a>
+  <a href="why-us.html" class="bottom-nav-item" data-page="why-us.html">
+    <span class="material-symbols-outlined">insights</span>Why Us
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact.html">
+    <span class="material-symbols-outlined">person</span>Contact
+  </a>
+</nav>
+
+<a href="contact.html" class="fab" aria-label="Contact Expert">
+  <span class="material-symbols-outlined">chat</span>
+</a>
+
+<div class="bottom-nav-spacer"></div>
+
+<script src="main.js"></script>
+</body>
+</html>

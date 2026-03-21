@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Oper9 | Architectural Precision</title>
+  <meta name="description" content="Learn about Oper9's mission, vision, core values and our journey from 2018 to a global pharmaceutical consulting authority."/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .value-cell {
+      background: var(--surface-container-lowest);
+      border-radius: var(--radius-xl);
+      padding: 1.75rem;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      aspect-ratio: 1;
+      transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
+    }
+    .value-cell:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,38,63,0.08); }
+    .value-cell .material-symbols-outlined { font-size: 1.875rem; color: var(--secondary); }
+    .value-label { font-size: 0.875rem; font-weight: 700; color: var(--primary); }
+
+    @media (min-width: 768px) {
+      .values-grid { grid-template-columns: repeat(4, 1fr); }
+      .value-cell { aspect-ratio: auto; padding: 2rem; gap: 2rem; }
+    }
+
+    .mission-vision-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+    @media (min-width: 768px) { .mission-vision-grid { grid-template-columns: 1fr 1fr; } }
+
+    .about-two-col { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
+    @media (min-width: 768px) { .about-two-col { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="index.html">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img"/>
+    </a>
+    <nav class="desktop-nav">
+      <a href="index.html" data-page="index.html">Home</a>
+      <a href="services.html" data-page="services.html">Services</a>
+      <a href="about.html" data-page="about.html">About</a>
+      <a href="why-us.html" data-page="why-us.html">Why Us</a>
+      <a href="contact.html" data-page="contact.html">Contact</a>
+      <a href="contact.html" class="nav-cta">Contact Expert</a>
+    </nav>
+    <button class="hamburger-btn" id="menu-btn" aria-label="Open menu">
+      <span class="material-symbols-outlined">menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" role="dialog" aria-modal="true">
+  <div class="mobile-menu-overlay"></div>
+  <div class="mobile-menu-drawer">
+    <div class="drawer-logo">
+      <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-drawer"/>
+      <button class="drawer-close" id="menu-close"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" data-page="index.html"><span class="material-symbols-outlined">home</span>Home</a>
+      <a href="services.html" data-page="services.html"><span class="material-symbols-outlined">grid_view</span>Services</a>
+      <a href="about.html" data-page="about.html"><span class="material-symbols-outlined">info</span>About</a>
+      <a href="why-us.html" data-page="why-us.html"><span class="material-symbols-outlined">insights</span>Why Us</a>
+      <a href="contact.html" data-page="contact.html"><span class="material-symbols-outlined">mail</span>Contact</a>
+    </nav>
+    <a href="contact.html" class="drawer-cta">Contact Expert</a>
+  </div>
+</div>
+
+<main>
+  <!-- HERO -->
+  <section class="page-hero" style="background:linear-gradient(135deg,var(--primary-container) 0%,var(--primary) 100%);">
+    <div class="orb" style="width:380px;height:380px;background:rgba(0,107,95,0.15);top:-60px;right:-80px;"></div>
+    <div style="max-width:1200px;margin:0 auto;position:relative;z-index:2;">
+      <span class="page-hero-tag">About Oper9</span>
+      <h1 class="page-hero-title">Engineering the<br/>Future of Pharma.</h1>
+      <p class="page-hero-subtitle">Architectural precision in pharmaceutical consulting, bridging the gap between clinical excellence and technological agility.</p>
+    </div>
+  </section>
+
+  <!-- COMPANY OVERVIEW -->
+  <section class="section" style="background:var(--surface);">
+    <div class="section-inner">
+      <div class="about-two-col">
+        <div class="reveal">
+          <span class="section-tag">Company Overview</span>
+          <h2 class="section-title">Where Pharma Meets Precision Tech</h2>
+          <div class="section-divider"></div>
+          <p class="section-subtitle">Oper9 stands at the intersection of high-stakes pharma and cutting-edge tech. We provide a curated framework for firms seeking authoritative intelligence and meticulous organizational growth.</p>
+        </div>
+        <div class="mission-vision-grid reveal reveal-delay-2">
+          <div style="padding:2rem;background:var(--surface-container-lowest);border-radius:var(--radius-xl);border-left:4px solid var(--secondary);box-shadow:0 2px 16px rgba(0,38,63,0.04);">
+            <span class="material-symbols-outlined" style="color:var(--secondary);font-size:1.5rem;margin-bottom:0.75rem;display:block;">rocket_launch</span>
+            <h3 style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--primary);margin-bottom:0.5rem;">Our Mission</h3>
+            <p style="font-size:0.9375rem;color:var(--on-surface);font-weight:500;line-height:1.6;">Creating long-lasting, agile services that redefine clinical standards.</p>
+          </div>
+          <div style="padding:2rem;background:var(--primary);border-radius:var(--radius-xl);">
+            <span class="material-symbols-outlined" style="color:var(--secondary-fixed-dim);font-size:1.5rem;margin-bottom:0.75rem;display:block;">visibility</span>
+            <h3 style="font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.16em;color:var(--primary-fixed);margin-bottom:0.5rem;">Our Vision</h3>
+            <p style="font-size:1.0625rem;color:var(--on-primary);font-weight:700;line-height:1.5;letter-spacing:-0.02em;">To become a successful global service provider.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE VALUES -->
+  <section class="section" style="background:var(--surface-container-low);">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:2rem;">
+        <h2 class="section-title">Core Values</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="values-grid">
+        <div class="value-cell reveal reveal-delay-1">
+          <span class="material-symbols-outlined">health_and_safety</span>
+          <span class="value-label">Patient Safety</span>
+        </div>
+        <div class="value-cell reveal reveal-delay-2">
+          <span class="material-symbols-outlined">verified_user</span>
+          <span class="value-label">Accountability</span>
+        </div>
+        <div class="value-cell reveal reveal-delay-3">
+          <span class="material-symbols-outlined">visibility</span>
+          <span class="value-label">Transparency</span>
+        </div>
+        <div class="value-cell reveal reveal-delay-4">
+          <span class="material-symbols-outlined">diversity_3</span>
+          <span class="value-label">Respect &amp; Equality</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="section" style="background:var(--surface);overflow:hidden;">
+    <div class="section-inner">
+      <div class="reveal" style="margin-bottom:3rem;">
+        <h2 class="section-title">Our Journey</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-two-col">
+        <div class="timeline">
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-dot" style="background:var(--secondary);"></div>
+            <div class="timeline-year">2018</div>
+            <div class="timeline-title">The Inception</div>
+            <p class="timeline-desc">Founded with a vision to integrate clinical precision with enterprise technology.</p>
+          </div>
+          <div class="timeline-item reveal reveal-delay-2">
+            <div class="timeline-dot" style="background:var(--primary);"></div>
+            <div class="timeline-year">2020</div>
+            <div class="timeline-title">Regional Pivot</div>
+            <p class="timeline-desc">Expanded service portfolio to include agile architectural frameworks for global pharma.</p>
+          </div>
+          <div class="timeline-item reveal reveal-delay-3">
+            <div class="timeline-dot" style="background:var(--secondary);"></div>
+            <div class="timeline-year">2022</div>
+            <div class="timeline-title">Tech Integration</div>
+            <p class="timeline-desc">Launched proprietary intelligence tools for real-time compliance monitoring.</p>
+          </div>
+          <div class="timeline-item reveal reveal-delay-4">
+            <div class="timeline-dot" style="background:var(--primary);"></div>
+            <div class="timeline-year">2024</div>
+            <div class="timeline-title">Global Authority</div>
+            <p class="timeline-desc">Operating as a premier consulting firm across three continents.</p>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div style="border-radius:var(--radius-xl);overflow:hidden;aspect-ratio:4/3;position:relative;">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYggvxMKPOuqv1a9GCt2v_GS_Osjdv2_Y9vPB2aU9x8Yi4uxjjIHPZBvUhSSBVWS26h4HVpju0-J4Vp-Wcy4uic07Ip7lIWLoPzolU8F317n79V6TzsD1gM2ZJcNKvPxMAecLaZ93CTAdX3llDRIE_7zLl2kaJNyvkbJOR8grr9-ZTs7VOAgigCfuNIoLKsq03rQmsbsOLho_kzuZodexe1YGIs9U6kRBodN-XJIze1DNZddXm1qJ4drCxcyBc-9VyiEij5m8tg9g" alt="Pharmaceutical laboratory"/>
+            <div style="position:absolute;inset:0;background:rgba(0,38,63,0.18);mix-blend-mode:multiply;"></div>
+            <div style="position:absolute;bottom:1.25rem;left:1.25rem;right:1.25rem;">
+              <div style="background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:0.75rem;padding:1rem;">
+                <p style="font-size:0.625rem;font-weight:800;text-transform:uppercase;letter-spacing:0.18em;color:var(--primary);margin-bottom:0.25rem;">Our Environment</p>
+                <p style="font-size:0.875rem;color:var(--on-surface);">Precision-engineered workspace for expert analysis.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="background:var(--primary);padding:5rem 1.5rem;text-align:center;position:relative;overflow:hidden;">
+    <div class="orb" style="width:350px;height:350px;background:rgba(0,107,95,0.2);top:-80px;left:50%;transform:translateX(-50%);"></div>
+    <div style="position:relative;z-index:2;max-width:540px;margin:0 auto;">
+      <h2 style="font-size:clamp(1.75rem,5vw,2.5rem);font-weight:900;letter-spacing:-0.04em;color:#fff;margin-bottom:1rem;" class="reveal">Join Our Network</h2>
+      <p style="color:var(--on-primary-container);margin-bottom:2rem;line-height:1.65;" class="reveal reveal-delay-1">Work with a team that has deep clinical intelligence and a passion for precision.</p>
+      <a href="contact.html" class="btn btn-secondary reveal reveal-delay-2" style="display:inline-flex;padding:1rem 2.5rem;font-size:1rem;">Get In Touch</a>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div style="margin-bottom:0.75rem;">
+        <img src="logo.png" alt="Oper9 Business Consultants" class="logo-img-sm"/>
+      </div>
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+    <div class="footer-links-grid">
+      <div class="footer-links-group">
+        <h4>Resources</h4>
+        <a href="services.html">Solutions</a>
+        <a href="why-us.html">Expertise</a>
+        <a href="contact.html">Intelligence</a>
+      </div>
+      <div class="footer-links-group">
+        <h4>Company</h4>
+        <a href="contact.html">Advisory</a>
+        <a href="contact.html">Privacy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Oper9 Pharma-Tech Consulting. Architectural Precision Framework.</p>
+    </div>
+  </div>
+</footer>
+
+<nav class="bottom-nav">
+  <a href="index.html" class="bottom-nav-item" data-page="index.html">
+    <span class="material-symbols-outlined">home</span>Home
+  </a>
+  <a href="services.html" class="bottom-nav-item" data-page="services.html">
+    <span class="material-symbols-outlined">grid_view</span>Services
+  </a>
+  <a href="why-us.html" class="bottom-nav-item" data-page="why-us.html">
+    <span class="material-symbols-outlined">insights</span>Why Us
+  </a>
+  <a href="contact.html" class="bottom-nav-item" data-page="contact.html">
+    <span class="material-symbols-outlined">person</span>Contact
+  </a>
+</nav>
+<a href="contact.html" class="fab"><span class="material-symbols-outlined">chat</span></a>
+<div class="bottom-nav-spacer"></div>
+<script src="main.js"></script>
+</body>
+</html>
