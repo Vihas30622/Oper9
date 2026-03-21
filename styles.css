@@ -118,49 +118,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   100% { transform: translateY(0px) rotate(0deg); }
 }
 
-@keyframes scrollLeft {
-  0% { transform: translateX(0); }
-/* scroll relative to the exact repeated content width, calculation handles 50% shift */
-  100% { transform: translateX(-50%); } 
-}
-
-.marquee-container {
+/* Interactive Visionary Strip */
+.visionary-strip {
   display: flex;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 2rem 0;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0 3rem;
+  margin: 0 -1.5rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  scrollbar-width: none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
 }
+.visionary-strip::-webkit-scrollbar { display: none; }
 
-/* Linear gradients on edges to fade out the scrolling items seamlessly */
-.marquee-container::before,
-.marquee-container::after {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 15%;
-  z-index: 2;
-  pointer-events: none;
-}
-.marquee-container::before {
-  left: 0;
-  background: linear-gradient(to right, var(--surface-container-low), transparent);
-}
-.marquee-container::after {
-  right: 0;
-  background: linear-gradient(to left, var(--surface-container-low), transparent);
-}
-
-.marquee-content {
-  display: flex;
-  gap: 3rem;
-  padding-right: 3rem; /* match gap */
-  width: max-content;
-  animation: scrollLeft 35s linear infinite;
-  will-change: transform;
-}
-.marquee-container:hover .marquee-content {
-  animation-play-state: paused;
+@media (min-width: 768px) {
+  .visionary-strip {
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1200px;
+    justify-content: center;
+  }
 }
 
 .visionary-card {
