@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const marquee = document.getElementById('visionary-marquee');
   if (marquee) {
     // 1. Clone the base elements cleanly through JS to build a massive robust track
-    // We clone our 5 cards 25 times = 125 cards! This ensures extreme momentum scrolls never hit the edge.
     const originalCards = Array.from(marquee.children);
-    for (let i = 0; i < 25; i++) {
+    // Clone 30 times guaranteeing an un-hittable edge for massive momentum flicks
+    for (let i = 0; i < 30; i++) {
       originalCards.forEach(card => {
         const clone = card.cloneNode(true);
         clone.setAttribute('aria-hidden', 'true');
@@ -142,43 +142,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let isScrolling = true;
+    let interactionTimeout;
     
-    // Jump straight to the center of the massive buffer track!
+    // Exact visual synchronization measurement
+    // The precise integer distance between the start of Set 1 and Set 2
+    let setWidth = 0;
     setTimeout(() => {
-      marquee.scrollLeft = (marquee.scrollWidth / 2);
+      const allCards = marquee.querySelectorAll('.visionary-card');
+      if (allCards.length > 5) {
+        setWidth = allCards[5].offsetLeft - allCards[0].offsetLeft;
+        marquee.scrollLeft = setWidth * 15; // Set precisely in the middle!
+      }
     }, 500);
 
-    // Completely pause animation when they interact so we don't fight native momentum!
-    // But NEVER pause on desktop pointer hover, only on active clicks/touches!
-    marquee.addEventListener('touchstart', () => isScrolling = false, {passive: true});
-    marquee.addEventListener('touchend', () => setTimeout(() => isScrolling = true, 1000));
-    marquee.addEventListener('mousedown', () => isScrolling = false);
-    marquee.addEventListener('mouseup', () => setTimeout(() => isScrolling = true, 1000));
-    
-    // Trackpad scroll safety
-    let wheelTimeout;
-    marquee.addEventListener('wheel', () => {
+    // ANY physical movement (touch, mouse, wheel, MOMENTUM physics) fires the 'scroll' event.
+    // By exclusively debouncing this, we NEVER kill a native momentum swipe mid-flight!
+    marquee.addEventListener('scroll', () => {
       isScrolling = false;
-      clearTimeout(wheelTimeout);
-      wheelTimeout = setTimeout(() => isScrolling = true, 800);
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isScrolling = true;
+      }, 300); // 300ms after the absolute final microscopic momentum pixel settles
     }, {passive: true});
 
-    let autoScrollSpeed = window.devicePixelRatio > 1 ? window.devicePixelRatio : 1; // ensure minimum 1 pixel scaling
+    // We also listen to explicit user grabs so it doesn't squirm while they hold it still
+    const pauseFunc = () => { isScrolling = false; clearTimeout(interactionTimeout); };
+    marquee.addEventListener('touchstart', pauseFunc, {passive: true});
+    marquee.addEventListener('mousedown', pauseFunc);
     
-    // Seamless gentle auto-scroll
+    let autoScrollSpeed = window.devicePixelRatio > 1 ? window.devicePixelRatio : 1; 
+
     function autoScroll() {
-      if (isScrolling) {
-        // Fallback robust scroll left shift
+      // ONLY manipulate scroll physics natively if NO momentum is active
+      if (isScrolling && setWidth > 0) {
         marquee.scrollLeft += autoScrollSpeed;
 
-        // If they drift extremely far, secretly jump them back precisely to the center!
-        // We only do this logic while isScrolling is TRUE (meaning native physics is inactive!)
-        // This permanently guarantees a native smooth swipe experience
-        if (marquee.scrollLeft >= marquee.scrollWidth * 0.8) {
-          marquee.scrollLeft = marquee.scrollWidth * 0.3; // safe exact jump safely inside
+        // If they drift extremely far, secretly jump them back by PERFECT visual exact blocks
+        // We only do this when momentum is entirely dead so we never cause an abrupt halt.
+        if (marquee.scrollLeft > setWidth * 25) {
+          marquee.scrollLeft -= (setWidth * 10); 
         }
-        else if (marquee.scrollLeft <= marquee.scrollWidth * 0.1) {
-          marquee.scrollLeft = marquee.scrollWidth * 0.6; // safe exact jump securely inside
+        else if (marquee.scrollLeft < setWidth * 5) {
+          marquee.scrollLeft += (setWidth * 10); 
         }
       }
       requestAnimationFrame(autoScroll);
