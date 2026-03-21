@@ -836,7 +836,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .form-input, .form-textarea {
   width: 100%;
-  background: var(--surface-container-high);
+  background: #ffffff;
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0.5rem 0.5rem 0 0;
