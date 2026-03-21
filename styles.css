@@ -30,17 +30,17 @@
   --secondary-fixed-dim: rgba(161, 160, 158, 1);
 
   /* Surfaces */
-  --background: #cfdbe6; /* Color 2 */
+  --background: #b0b7bd; /* Darker slate grey background */
   --on-background: #2f3b46;
 
-  /* Cards pop in white against #CFDBE6 background */
+  /* Cards pop in white against the darker grey background */
   --surface-container-lowest: #ffffff; 
   --surface-container-low: #e7f0f7; /* Color 1 */
   --surface: #e7f0f7;
-  --surface-dim: #cfdbe6;
+  --surface-dim: #b0b7bd; /* Matching bg */
   --surface-bright: #ffffff;
   
-  --surface-container: #cfdbe6;
+  --surface-container: #b0b7bd; /* Matching bg */
   --surface-container-high: rgba(161, 160, 158, 1); /* Color 3 */
   --surface-container-highest: #6f8fa8;
   
@@ -117,10 +117,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(231, 240, 247, 0.90);
+  background: rgba(176, 183, 189, 0.90);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(176, 184, 190, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   transition: box-shadow 0.3s ease;
 }
 .site-header.scrolled {
@@ -296,10 +296,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 90;
-  background: rgba(231, 240, 247, 0.95);
+  background: rgba(176, 183, 189, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-top: 1px solid rgba(176, 184, 190, 0.15);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -457,6 +457,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 .animated-cta:hover .button-text {
  color: var(--on-primary);
+}
+
+.animated-cta-reversed {
+  color: var(--on-primary);
+}
+.animated-cta-reversed .circle {
+  background: var(--on-primary);
+}
+.animated-cta-reversed .circle .icon {
+  background: var(--primary);
+}
+.animated-cta-reversed .circle .icon.arrow::before {
+  border-top: 0.125rem solid var(--primary);
+  border-right: 0.125rem solid var(--primary);
+}
+.animated-cta-reversed .button-text {
+  color: var(--on-primary);
+}
+.animated-cta-reversed:hover .circle .icon.arrow {
+  background: var(--primary);
+}
+.animated-cta-reversed:hover .button-text {
+  color: var(--primary);
 }
 
 /* ---------- Section Wrappers ---------- */
