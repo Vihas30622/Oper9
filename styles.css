@@ -22,20 +22,20 @@
   --on-secondary-container: #0a4a5e;
   --secondary-fixed: #a0cfe0;
   --secondary-fixed-dim: #6bb8d0;
-  /* Surfaces: matte gray replacing white */
-  --surface: #ecedee;
-  --surface-dim: #c8cacc;
-  --surface-bright: #f0f1f2;
-  --surface-container-lowest: #e4e6e8;   /* was #ffffff */
-  --surface-container-low: #e8eaec;
-  --surface-container: #dfe1e3;
-  --surface-container-high: #d6d8da;
-  --surface-container-highest: #ccced0;
-  --surface-variant: #d4d6d8;
-  --on-surface: #141618;
-  --on-surface-variant: #3a3f44;
-  --background: #e8eaec;
-  --on-background: #141618;
+  /* Surfaces: clearly matte gray */
+  --surface: #d4d6d8;
+  --surface-dim: #b8bbbe;
+  --surface-bright: #dcdee0;
+  --surface-container-lowest: #ccced1;   /* was near-white, now clearly gray */
+  --surface-container-low: #d0d2d5;
+  --surface-container: #c8cacd;
+  --surface-container-high: #bec1c4;
+  --surface-container-highest: #b4b8bb;
+  --surface-variant: #c4c7ca;
+  --on-surface: #0e1012;
+  --on-surface-variant: #32373c;
+  --background: #cacdd0;
+  --on-background: #0e1012;
   --outline: #68737a;
   --outline-variant: #b0b8be;
   --error: #ba1a1a;
@@ -104,7 +104,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(232, 234, 236, 0.88);
+  background: rgba(202, 205, 208, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(176, 184, 190, 0.2);
@@ -283,7 +283,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 90;
-  background: rgba(228, 230, 232, 0.95);
+  background: rgba(198, 201, 205, 0.97);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-top: 1px solid rgba(176, 184, 190, 0.15);
