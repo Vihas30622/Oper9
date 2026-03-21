@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     marquee.addEventListener('touchend', resumeFunc, {passive: true});
     marquee.addEventListener('mouseup', resumeFunc);
     
-    let autoScrollSpeed = 0.5; // Gentler cinematic speed (reduced from devicePixelRatio scaling)
+    let autoScrollSpeed = 0.2; // Ultra-slow cinematic speed
 
     function autoScroll() {
       // ONLY manipulate scroll physics natively if NO momentum is active
