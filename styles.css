@@ -411,18 +411,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--on-primary);
   box-shadow: 0 4px 16px rgba(0, 38, 63, 0.2);
 }
-.btn-primary:hover { opacity: 0.92; box-shadow: 0 8px 24px rgba(0, 38, 63, 0.28); }
+.btn-primary:hover, .btn-primary.play-hover { opacity: 0.92; box-shadow: 0 8px 24px rgba(0, 38, 63, 0.28); }
 .btn-secondary {
   background: var(--secondary);
   color: var(--on-secondary);
 }
-.btn-secondary:hover { opacity: 0.9; }
+.btn-secondary:hover, .btn-secondary.play-hover { opacity: 0.9; }
 .btn-outline {
   background: transparent;
   color: var(--on-primary);
   border: 2px solid rgba(255,255,255,0.35);
 }
-.btn-outline:hover { background: rgba(255,255,255,0.1); }
+.btn-outline:hover, .btn-outline.play-hover { background: rgba(255,255,255,0.1); }
 .btn-full { width: 100%; }
 
 /* ---------- Animated Uiverse CTA ---------- */
@@ -501,16 +501,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
  font-size: 0.8125rem;
 }
 
-.animated-cta:hover .circle {
+.animated-cta:hover .circle, .animated-cta.play-hover .circle {
  width: 100%;
 }
 
-.animated-cta:hover .circle .icon.arrow {
+.animated-cta:hover .circle .icon.arrow, .animated-cta.play-hover .circle .icon.arrow {
  background: var(--on-primary);
  transform: translate(1rem, 0);
 }
 
-.animated-cta:hover .button-text {
+.animated-cta:hover .button-text, .animated-cta.play-hover .button-text {
  color: var(--on-primary);
 }
 
@@ -530,10 +530,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .animated-cta-reversed .button-text {
   color: var(--on-primary);
 }
-.animated-cta-reversed:hover .circle .icon.arrow {
+.animated-cta-reversed:hover .circle .icon.arrow, .animated-cta-reversed.play-hover .circle .icon.arrow {
   background: var(--primary);
 }
-.animated-cta-reversed:hover .button-text {
+.animated-cta-reversed:hover .button-text, .animated-cta-reversed.play-hover .button-text {
   color: var(--primary);
 }
 
@@ -578,7 +578,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: transform 0.25s var(--transition-quint), box-shadow 0.25s ease;
   overflow: hidden;
 }
-.card:hover {
+.card:hover, .card.play-hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 40px rgba(0, 38, 63, 0.08);
 }

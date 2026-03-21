@@ -220,4 +220,37 @@ document.addEventListener('DOMContentLoaded', () => {
     
     requestAnimationFrame(animate);
   }
+
+  /* ---------- Mobile Hover-Then-Redirect Logic ---------- */
+  const isMobile = () => window.innerWidth <= 768;
+  
+  document.addEventListener('click', (e) => {
+    // Only intercept on mobile
+    if (!isMobile()) return;
+
+    // Find the nearest link that needs this behavior
+    const link = e.target.closest('a');
+    if (!link) return;
+
+    // Target specific interactive components that have distinct hover states
+    const targetSelectors = ['.btn', '.animated-cta', '.service-card', '.module-card', '.card', '.why-card'];
+    const needsAnimation = targetSelectors.some(sel => link.matches(sel) || link.closest(sel));
+
+    if (needsAnimation && !link.dataset.animating) {
+      e.preventDefault();
+      
+      // Mark as animating to prevent recursive loops
+      link.dataset.animating = "true";
+      
+      // Add the play-hover class to the link itself or its nearest visual parent
+      const visualTarget = link.closest('.card, .service-card, .module-card, .why-card, .btn, .animated-cta') || link;
+      visualTarget.classList.add('play-hover');
+
+      // Wait for the animation (longest is 0.45s, so 500ms is safe)
+      setTimeout(() => {
+        window.location.href = link.href;
+      }, 500);
+    }
+  });
+
 });
