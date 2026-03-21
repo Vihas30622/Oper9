@@ -190,20 +190,24 @@ document.addEventListener('DOMContentLoaded', () => {
     marquee.addEventListener('mouseup', resumeFunc);
     
     let autoScrollSpeed = 0.1; // Slower cinematic speed requested by the user
-    let currentX = 0; // Fractional position tracker to prevent integer truncation
+    let currentX = 0; // The true fractional scroll position
 
     function autoScroll() {
       // ONLY manipulate scroll physics natively if NO momentum is active
       if (isScrolling && setWidth > 0) {
-        // Initialize currentX if first frame
+        // First frame initialization
         if (currentX === 0) currentX = marquee.scrollLeft;
 
         currentX += autoScrollSpeed;
-        marquee.scrollLeft = currentX; 
-        lastScrollLeft = marquee.scrollLeft; // Sync causality tracker
+        
+        // ONLY update DOM if we've accumulated at least 1 full pixel movement
+        // to avoid browser float-to-int truncation killing the motion
+        if (Math.abs(currentX - marquee.scrollLeft) >= 1) {
+          marquee.scrollLeft = Math.floor(currentX);
+          lastScrollLeft = marquee.scrollLeft; // Sync causality tracker
+        }
 
-        // If they drift extremely far, secretly jump them back by PERFECT visual exact blocks
-        // We only do this when momentum is entirely dead so we never cause an abrupt halt.
+        // Seamless loop boundaries
         if (marquee.scrollLeft > setWidth * 25) {
           marquee.scrollLeft -= (setWidth * 10); 
           currentX = marquee.scrollLeft;
@@ -215,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
           lastScrollLeft = marquee.scrollLeft;
         }
       } else {
-        // When not auto-scrolling (user manual action), sync the fractional tracker
+        // Sync our true X tracker with the actual manual position
         currentX = marquee.scrollLeft;
       }
       requestAnimationFrame(autoScroll);
