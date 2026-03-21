@@ -109,4 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ---------- Safe Spinning Glow Injection ---------- */
+  document.querySelectorAll('.module-card, .service-card').forEach(card => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'card-glow-wrapper';
+    
+    // Map vital visual grid attributes so layout flows perfectly
+    if (card.classList.contains('bento-wide')) {
+      wrapper.classList.add('bento-wide');
+    }
+    
+    const computed = window.getComputedStyle(card);
+    wrapper.style.gridColumn = computed.gridColumn;
+    wrapper.style.gridRow = computed.gridRow;
+    
+    card.parentNode.insertBefore(wrapper, card);
+    wrapper.appendChild(card);
+  });
+
 });
