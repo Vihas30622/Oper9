@@ -86,21 +86,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const resetBtn = document.querySelector('#reset-form');
 
   if (contactForm && formContainer && successScreen) {
-    contactForm.addEventListener('submit', e => {
+    contactForm.addEventListener('submit', async e => {
       e.preventDefault();
       
       // Check browser-level validation (triggers "Please fill out this field" tooltips)
       if (!contactForm.reportValidity()) {
         return;
       }
+
+      const btn = contactForm.querySelector('button[type="submit"]');
+      const btnText = btn.querySelector('.button-text');
+      const originalBtnText = btnText.textContent;
       
-      // 1. Hide form, show success
-      formContainer.style.display = 'none';
-      successScreen.style.display = 'flex';
-      
-      // Scroll to top of the card for better mobile visibility
-      const card = contactForm.closest('.form-card');
-      if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // 1. Loading State
+      btn.disabled = true;
+      btnText.textContent = 'Sending...';
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          // 2. Hide form, show success
+          formContainer.style.display = 'none';
+          successScreen.style.display = 'flex';
+          
+          // Scroll for visibility
+          const card = contactForm.closest('.form-card');
+          if (card) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          contactForm.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        alert('Oops! There was a problem sending your inquiry. Please try again.');
+        btn.disabled = false;
+        btnText.textContent = originalBtnText;
+      }
     });
 
     if (resetBtn) {
