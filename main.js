@@ -89,6 +89,11 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', e => {
       e.preventDefault();
       
+      // Check browser-level validation (triggers "Please fill out this field" tooltips)
+      if (!contactForm.reportValidity()) {
+        return;
+      }
+      
       // 1. Hide form, show success
       formContainer.style.display = 'none';
       successScreen.style.display = 'flex';
