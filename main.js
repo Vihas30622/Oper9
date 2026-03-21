@@ -169,13 +169,25 @@ document.addEventListener('DOMContentLoaded', () => {
       clearTimeout(interactionTimeout);
       interactionTimeout = setTimeout(() => {
         isScrolling = true;
-      }, 300); // 300ms after the absolute final microscopic momentum pixel settles
+      }, 3000); // Resume after 3 seconds of inactivity
     }, {passive: true});
 
     // We also listen to explicit user grabs so it doesn't squirm while they hold it still
-    const pauseFunc = () => { isScrolling = false; clearTimeout(interactionTimeout); };
+    const pauseFunc = () => { 
+      isScrolling = false; 
+      clearTimeout(interactionTimeout); 
+    };
+    const resumeFunc = () => {
+      clearTimeout(interactionTimeout);
+      interactionTimeout = setTimeout(() => {
+        isScrolling = true;
+      }, 3000);
+    };
+
     marquee.addEventListener('touchstart', pauseFunc, {passive: true});
     marquee.addEventListener('mousedown', pauseFunc);
+    marquee.addEventListener('touchend', resumeFunc, {passive: true});
+    marquee.addEventListener('mouseup', resumeFunc);
     
     let autoScrollSpeed = window.devicePixelRatio > 1 ? window.devicePixelRatio : 1; 
 
