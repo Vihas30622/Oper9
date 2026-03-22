@@ -34,31 +34,31 @@
   --secondary-fixed: #cfdbe6;
   --secondary-fixed-dim: rgba(161, 160, 158, 1);
 
-  /* Surfaces - NEW DARK SLATE THEME */
-  --background: #141b21; /* Very dark slate */
+  /* Surfaces - NEW LIGHTER SLATE THEME */
+  --background: #1c232b; /* Slightly lighter slate */
   --on-background: #f0f4f8; /* Off-white for text */
 
   /* Cards pop in white against the darker grey background */
-  --surface-container-lowest: #1a2229; 
-  --surface-container-low: #1e262d; 
-  --surface: #1e262d;
-  --surface-dim: #141b21; /* Matching bg */
-  --surface-bright: #2d3844;
+  --surface-container-lowest: #212930; 
+  --surface-container-low: #262e36; 
+  --surface: #262e36;
+  --surface-dim: #1c232b; 
+  --surface-bright: #3a4754;
   
-  --surface-container: #232c35; 
-  --surface-container-high: #2d3844; 
-  --surface-container-highest: #374451;
+  --surface-container: #2b353e; 
+  --surface-container-high: #35414d; 
+  --surface-container-highest: #404d5b;
   
-  --surface-variant: #1e262d;
+  --surface-variant: #262e36;
   --on-surface: #f0f4f8; 
   --on-surface-variant: #b0bac5;
   
   --outline: #4a5664;
-  --outline-variant: #374451; 
+  --outline-variant: #404d5b; 
   
   --error: #cf6679;
   --inverse-surface: #f8f9fa;
-  --inverse-on-surface: #141b21;
+  --inverse-on-surface: #1c232b;
   --inverse-primary: #6f8fa8; 
   --surface-tint: #6f8fa8;
 
