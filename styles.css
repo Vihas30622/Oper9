@@ -176,7 +176,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--surface-container-low); /* Solid light blue-gray */
+  background: #739bba; /* Updated to user requested color */
   border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Darker border for light background */
   transition: box-shadow 0.3s ease, transform 0.4s var(--transition-quint);
 }
@@ -203,12 +203,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   gap: 0.5rem;
   text-decoration: none;
 }
-.logo-icon { font-size: 1.75rem; color: var(--primary); }
+.logo-icon { font-size: 1.75rem; color: #ffffff; }
 .logo-text {
   font-size: 1.375rem;
   font-weight: 900;
   letter-spacing: -0.04em;
-  color: var(--primary);
+  color: #ffffff;
 }
 
 /* Custom logo image */
@@ -240,12 +240,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .desktop-nav a {
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--on-surface-variant);
+  color: rgba(255, 255, 255, 0.85);
   padding: 0.5rem 0.875rem;
   transition: color 0.25s ease, text-shadow 0.25s ease;
 }
-.desktop-nav a:hover { color: var(--primary); text-shadow: 0 0 10px rgba(47, 59, 70, 0.1); }
-.desktop-nav a.active { color: var(--primary); font-weight: 800; }
+.desktop-nav a:hover { color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+.desktop-nav a.active { color: #ffffff; font-weight: 800; }
 
 .nav-cta {
   display: none;
@@ -267,7 +267,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   width: 42px; height: 42px;
   border-radius: var(--radius-md);
   background: rgba(0, 0, 0, 0.05);
-  color: var(--primary);
+  color: #ffffff;
   transition: all 0.2s ease;
 }
 .hamburger-btn:hover { background: rgba(0, 0, 0, 0.1); }
@@ -355,8 +355,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 90;
-  background: var(--surface-container-low);
-  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  background: #739bba;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -379,7 +379,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   text-decoration: none;
   opacity: 0.7;
 }
-.bottom-nav-item.active { color: var(--primary); opacity: 1; }
+.bottom-nav-item.active { color: #ffffff; opacity: 1; }
 .bottom-nav-item .material-symbols-outlined { font-size: 1.375rem; }
 .bottom-nav-spacer { height: 76px; }
 
