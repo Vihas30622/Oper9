@@ -176,7 +176,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: #739bba; /* Updated to user requested color */
+  background: #88a9c4; /* Updated to user requested color */
   border-bottom: 1px solid rgba(0, 0, 0, 0.08); /* Darker border for light background */
   transition: box-shadow 0.3s ease, transform 0.4s var(--transition-quint);
 }
@@ -194,7 +194,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 1.5rem;
   max-width: 1280px;
   margin: 0 auto;
-  height: 88px;
+  height: 68px; /* Default height for mobile */
 }
 
 .logo {
@@ -213,19 +213,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Custom logo image */
 .logo-img {
-  height: 80px;
+  height: 60px; /* Default height for mobile */
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-sm {
-  height: 60px;
+  height: 48px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-drawer {
-  height: 72px;
+  height: 56px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -352,12 +352,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ---------- Bottom Nav (Mobile) ---------- */
 .bottom-nav {
+  display: none; /* Removed in mobile version per user request */
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 90;
-  background: #739bba;
+  background: #88a9c4;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
-  display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 0.625rem 1rem;
@@ -381,7 +381,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .bottom-nav-item.active { color: #ffffff; opacity: 1; }
 .bottom-nav-item .material-symbols-outlined { font-size: 1.375rem; }
-.bottom-nav-spacer { height: 76px; }
+.bottom-nav-spacer { display: none; }
 
 /* ---------- FAB ---------- */
 .fab {
@@ -739,6 +739,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .bottom-nav { display: none; }
   .fab { display: none; }
   .bottom-nav-spacer { display: none; }
+
+  .header-inner { height: 88px; }
+  .logo-img { height: 80px; }
+  .logo-img-sm { height: 60px; }
+  .logo-img-drawer { height: 72px; }
 
   .site-footer .footer-inner {
     grid-template-columns: 1.5fr 1fr 1fr;
