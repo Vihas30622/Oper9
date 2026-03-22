@@ -34,32 +34,32 @@
   --secondary-fixed: #cfdbe6;
   --secondary-fixed-dim: rgba(161, 160, 158, 1);
 
-  /* Surfaces - MODERN SLATE THEME (ELEVATED) */
-  --background: #3c4754; /* Medium Modern Slate */
-  --on-background: #ffffff;
+  /* Surfaces */
+  --background: #b0b7bd; /* Darker slate grey background */
+  --on-background: #2f3b46;
 
-  /* Cards pop in white against the medium slate background */
-  --surface-container-lowest: #444f5c; 
-  --surface-container-low: #4a5664; 
-  --surface: #4a5664;
-  --surface-dim: #3c4754; 
-  --surface-bright: #5c6774;
+  /* Cards pop in white against the darker grey background */
+  --surface-container-lowest: #ffffff; 
+  --surface-container-low: #e7f0f7; /* Color 1 */
+  --surface: #e7f0f7;
+  --surface-dim: #b0b7bd; /* Matching bg */
+  --surface-bright: #ffffff;
   
-  --surface-container: #505c6a; 
-  --surface-container-high: #5c6774; 
-  --surface-container-highest: #6d7885;
+  --surface-container: #b0b7bd; /* Matching bg */
+  --surface-container-high: rgba(161, 160, 158, 1); /* Color 3 */
+  --surface-container-highest: #6f8fa8;
   
-  --surface-variant: #4a5664;
-  --on-surface: #ffffff; 
-  --on-surface-variant: #e1e7ed;
+  --surface-variant: #e7f0f7;
+  --on-surface: #2f3b46; /* Color 5 */
+  --on-surface-variant: #2f3b46;
   
-  --outline: #6d7885;
-  --outline-variant: #5c6774; 
+  --outline: #6f8fa8;
+  --outline-variant: rgba(161, 160, 158, 1); /* Color 3 */
   
-  --error: #cf6679;
-  --inverse-surface: #f8f9fa;
-  --inverse-on-surface: #3c4754;
-  --inverse-primary: #6f8fa8; 
+  --error: #ba1a1a;
+  --inverse-surface: #2f3b46;
+  --inverse-on-surface: #ffffff;
+  --inverse-primary: rgba(161, 160, 158, 1); /* Color 3 */
   --surface-tint: #6f8fa8;
 
   --transition-quint: cubic-bezier(0.23, 1, 0.32, 1);
@@ -176,7 +176,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(60, 71, 84, 0.85); /* Matched to Modern Slate */
+  background: rgba(30, 41, 51, 0.85); /* Deep slate for high-contrast bright text */
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -334,8 +334,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--on-surface-variant);
   transition: color 0.25s ease;
 }
-.drawer-nav a:hover { color: #ffffff; }
-.drawer-nav a.active { color: #ffffff; font-weight: 800; }
+.drawer-nav a:hover { color: var(--primary); }
+.drawer-nav a.active { color: var(--primary); font-weight: 800; }
 .drawer-nav a .material-symbols-outlined { font-size: 1.25rem; }
 
 .drawer-cta {
@@ -357,7 +357,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: fixed;
   bottom: 0; left: 0; right: 0;
   z-index: 90;
-  background: rgba(60, 71, 84, 0.95);
+  background: rgba(30, 41, 51, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -494,13 +494,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
  transform: rotate(45deg);
 }
 
- .animated-cta .button-text {
-  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
-  position: relative;
-  z-index: 1;
-  margin: 0 0 0 3.5rem; /* Forces text to clear the icon safely */
-  color: #ffffff;
-  font-weight: 800;
+.animated-cta .button-text {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ z-index: 1;
+ margin: 0 0 0 3.5rem; /* Forces text to clear the icon safely */
+ color: var(--primary);
+ font-weight: 800;
  line-height: 1.6;
  text-align: left;
  text-transform: uppercase;
@@ -590,7 +590,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: clamp(1.75rem, 5vw, 2.75rem);
   font-weight: 800;
   letter-spacing: -0.04em;
-  color: #ffffff;
+  color: var(--primary);
   line-height: 1.1;
 }
 .section-divider {
@@ -606,10 +606,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1.65;
   margin-top: 1rem;
 }
-
-/* Specific Titles and Icons */
-.module-title, .reason-title, .service-title { color: #ffffff !important; }
-.material-symbols-outlined { color: inherit; } /* Allow titles to control color */
 
 /* ---------- Cards ---------- */
 .card {
@@ -811,7 +807,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1;
   margin-bottom: 0.5rem;
 }
-.timeline-title { font-size: 1.125rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
+.timeline-title { font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
 .timeline-desc { font-size: 0.875rem; color: var(--on-surface-variant); }
 
 /* ---------- Bento Grid (Desktop) ---------- */
@@ -843,11 +839,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--on-surface-variant);
 }
 .form-input, .form-textarea {
   width: 100%;
-  background: var(--surface-container-low);
+  background: #ffffff;
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0.5rem 0.5rem 0 0;
@@ -858,7 +854,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-.form-input::placeholder, .form-textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(114, 119, 126, 0.6); }
 .form-input:focus, .form-textarea:focus {
   border-color: var(--secondary);
   background: var(--surface-container);
@@ -870,9 +866,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .contact-icon {
   width: 48px; height: 48px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-container-highest);
   display: flex; align-items: center; justify-content: center;
-  color: #ffffff;
+  color: var(--primary);
   flex-shrink: 0;
 }
 .contact-label {
