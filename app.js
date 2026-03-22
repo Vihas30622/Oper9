@@ -7,8 +7,22 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Scroll-activated header shadow ---------- */
   const header = document.querySelector('.site-header');
   if (header) {
+    let lastScrollY = window.scrollY;
     const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 12);
+      const currentScrollY = window.scrollY;
+      
+      // Update scrolled class for shadow
+      header.classList.toggle('scrolled', currentScrollY > 12);
+
+      // Hide/Show logic based on direction
+      // We only hide if we scroll down and passed a threshold (e.g., 80px)
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        header.classList.add('nav-hidden');
+      } else {
+        header.classList.remove('nav-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

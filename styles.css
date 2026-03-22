@@ -180,10 +180,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.4s var(--transition-quint);
 }
 .site-header.scrolled {
   box-shadow: 0 2px 24px rgba(0, 38, 63, 0.08);
+}
+.site-header.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .header-inner {
