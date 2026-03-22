@@ -259,7 +259,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 0.875rem !important;
   transition: opacity 0.2s ease, transform 0.2s var(--transition-quint) !important;
 }
-.nav-cta:hover { opacity: 0.9 !important; transform: scale(1.03) !important; background: var(--primary) !important; }
+.nav-cta:hover { opacity: 1 !important; transform: scale(1.03) !important; background: #ffffff !important; color: var(--primary) !important; }
 
 /* Hamburger */
 .hamburger-btn {
@@ -268,11 +268,11 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   justify-content: center;
   width: 42px; height: 42px;
   border-radius: var(--radius-md);
-  background: var(--surface-container-high);
-  color: var(--primary);
-  transition: background 0.2s ease;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  transition: all 0.2s ease;
 }
-.hamburger-btn:hover { background: var(--surface-container-highest); }
+.hamburger-btn:hover { background: rgba(255, 255, 255, 0.15); }
 
 /* Mobile Menu Drawer */
 .mobile-menu {
