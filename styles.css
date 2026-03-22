@@ -34,31 +34,31 @@
   --secondary-fixed: #cfdbe6;
   --secondary-fixed-dim: rgba(161, 160, 158, 1);
 
-  /* Surfaces - NEW LIGHTER SLATE THEME */
-  --background: #1c232b; /* Slightly lighter slate */
-  --on-background: #f0f4f8; /* Off-white for text */
+  /* Surfaces - MODERN SLATE THEME (ELEVATED) */
+  --background: #3c4754; /* Medium Modern Slate */
+  --on-background: #ffffff;
 
-  /* Cards pop in white against the darker grey background */
-  --surface-container-lowest: #212930; 
-  --surface-container-low: #262e36; 
-  --surface: #262e36;
-  --surface-dim: #1c232b; 
-  --surface-bright: #3a4754;
+  /* Cards pop in white against the medium slate background */
+  --surface-container-lowest: #444f5c; 
+  --surface-container-low: #4a5664; 
+  --surface: #4a5664;
+  --surface-dim: #3c4754; 
+  --surface-bright: #5c6774;
   
-  --surface-container: #2b353e; 
-  --surface-container-high: #35414d; 
-  --surface-container-highest: #404d5b;
+  --surface-container: #505c6a; 
+  --surface-container-high: #5c6774; 
+  --surface-container-highest: #6d7885;
   
-  --surface-variant: #262e36;
-  --on-surface: #f0f4f8; 
-  --on-surface-variant: #b0bac5;
+  --surface-variant: #4a5664;
+  --on-surface: #ffffff; 
+  --on-surface-variant: #e1e7ed;
   
-  --outline: #4a5664;
-  --outline-variant: #404d5b; 
+  --outline: #6d7885;
+  --outline-variant: #5c6774; 
   
   --error: #cf6679;
   --inverse-surface: #f8f9fa;
-  --inverse-on-surface: #1c232b;
+  --inverse-on-surface: #3c4754;
   --inverse-primary: #6f8fa8; 
   --surface-tint: #6f8fa8;
 
