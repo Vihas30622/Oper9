@@ -34,32 +34,32 @@
   --secondary-fixed: #cfdbe6;
   --secondary-fixed-dim: rgba(161, 160, 158, 1);
 
-  /* Surfaces */
-  --background: #b0b7bd; /* Darker slate grey background */
-  --on-background: #2f3b46;
+  /* Surfaces - NEW DARK SLATE THEME */
+  --background: #141b21; /* Very dark slate */
+  --on-background: #f0f4f8; /* Off-white for text */
 
   /* Cards pop in white against the darker grey background */
-  --surface-container-lowest: #ffffff; 
-  --surface-container-low: #e7f0f7; /* Color 1 */
-  --surface: #e7f0f7;
-  --surface-dim: #b0b7bd; /* Matching bg */
-  --surface-bright: #ffffff;
+  --surface-container-lowest: #1a2229; 
+  --surface-container-low: #1e262d; 
+  --surface: #1e262d;
+  --surface-dim: #141b21; /* Matching bg */
+  --surface-bright: #2d3844;
   
-  --surface-container: #b0b7bd; /* Matching bg */
-  --surface-container-high: rgba(161, 160, 158, 1); /* Color 3 */
-  --surface-container-highest: #6f8fa8;
+  --surface-container: #232c35; 
+  --surface-container-high: #2d3844; 
+  --surface-container-highest: #374451;
   
-  --surface-variant: #e7f0f7;
-  --on-surface: #2f3b46; /* Color 5 */
-  --on-surface-variant: #2f3b46;
+  --surface-variant: #1e262d;
+  --on-surface: #f0f4f8; 
+  --on-surface-variant: #b0bac5;
   
-  --outline: #6f8fa8;
-  --outline-variant: rgba(161, 160, 158, 1); /* Color 3 */
+  --outline: #4a5664;
+  --outline-variant: #374451; 
   
-  --error: #ba1a1a;
-  --inverse-surface: #2f3b46;
-  --inverse-on-surface: #ffffff;
-  --inverse-primary: rgba(161, 160, 158, 1); /* Color 3 */
+  --error: #cf6679;
+  --inverse-surface: #f8f9fa;
+  --inverse-on-surface: #141b21;
+  --inverse-primary: #6f8fa8; 
   --surface-tint: #6f8fa8;
 
   --transition-quint: cubic-bezier(0.23, 1, 0.32, 1);
@@ -843,7 +843,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .form-input, .form-textarea {
   width: 100%;
-  background: #ffffff;
+  background: var(--surface-container-low);
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0.5rem 0.5rem 0 0;
