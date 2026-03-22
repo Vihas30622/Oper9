@@ -334,8 +334,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   color: var(--on-surface-variant);
   transition: color 0.25s ease;
 }
-.drawer-nav a:hover { color: var(--primary); }
-.drawer-nav a.active { color: var(--primary); font-weight: 800; }
+.drawer-nav a:hover { color: #ffffff; }
+.drawer-nav a.active { color: #ffffff; font-weight: 800; }
 .drawer-nav a .material-symbols-outlined { font-size: 1.25rem; }
 
 .drawer-cta {
@@ -807,7 +807,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   line-height: 1;
   margin-bottom: 0.5rem;
 }
-.timeline-title { font-size: 1.125rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; }
+.timeline-title { font-size: 1.125rem; font-weight: 700; color: #ffffff; margin-bottom: 0.5rem; }
 .timeline-desc { font-size: 0.875rem; color: var(--on-surface-variant); }
 
 /* ---------- Bento Grid (Desktop) ---------- */
