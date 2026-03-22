@@ -194,7 +194,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 1.5rem;
   max-width: 1280px;
   margin: 0 auto;
-  height: 68px;
+  height: 88px;
 }
 
 .logo {
@@ -213,19 +213,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Custom logo image */
 .logo-img {
-  height: 60px;
+  height: 80px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-sm {
-  height: 48px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-drawer {
-  height: 56px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   display: block;
