@@ -607,6 +607,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-top: 1rem;
 }
 
+/* Specific Titles and Icons */
+.module-title, .reason-title, .service-title { color: #ffffff !important; }
+.material-symbols-outlined { color: inherit; } /* Allow titles to control color */
+
 /* ---------- Cards ---------- */
 .card {
   background: var(--surface-container-lowest);
