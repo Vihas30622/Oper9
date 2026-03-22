@@ -839,7 +839,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--on-surface-variant);
+  color: rgba(255, 255, 255, 0.9);
 }
 .form-input, .form-textarea {
   width: 100%;
@@ -854,7 +854,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   outline: none;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
-.form-input::placeholder, .form-textarea::placeholder { color: rgba(114, 119, 126, 0.6); }
+.form-input::placeholder, .form-textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
 .form-input:focus, .form-textarea:focus {
   border-color: var(--secondary);
   background: var(--surface-container);
@@ -866,9 +866,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .contact-icon {
   width: 48px; height: 48px;
   border-radius: var(--radius-md);
-  background: var(--surface-container-highest);
+  background: rgba(255, 255, 255, 0.08);
   display: flex; align-items: center; justify-content: center;
-  color: var(--primary);
+  color: #ffffff;
   flex-shrink: 0;
 }
 .contact-label {
