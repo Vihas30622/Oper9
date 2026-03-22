@@ -194,7 +194,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 0 1.5rem;
   max-width: 1280px;
   margin: 0 auto;
-  height: 68px; /* Default height for mobile */
+  height: 88px; /* Prominent height for all devices */
 }
 
 .logo {
@@ -213,19 +213,19 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Custom logo image */
 .logo-img {
-  height: 60px; /* Default height for mobile */
+  height: 80px; /* Prominent height for all devices */
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-sm {
-  height: 48px;
+  height: 60px;
   width: auto;
   object-fit: contain;
   display: block;
 }
 .logo-img-drawer {
-  height: 56px;
+  height: 72px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -739,11 +739,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .bottom-nav { display: none; }
   .fab { display: none; }
   .bottom-nav-spacer { display: none; }
-
-  .header-inner { height: 88px; }
-  .logo-img { height: 80px; }
-  .logo-img-sm { height: 60px; }
-  .logo-img-drawer { height: 72px; }
 
   .site-footer .footer-inner {
     grid-template-columns: 1.5fr 1fr 1fr;
